@@ -1,0 +1,78 @@
+name: 🏥 Newsletter Agente Salud - Ejecución Automática
+
+on:
+  schedule:
+    # Todos los lunes a las 7:00 AM (hora Ciudad de México, UTC-6)
+    - cron: '0 13 * * 1'
+  workflow_dispatch:
+    inputs:
+      audience:
+        description: 'Audiencia objetivo'
+        required: true
+        default: 'DPE'
+        type: choice
+        options:
+          - DPE
+          - Departamentos
+          - DG
+      frequency:
+        description: 'Frecuencia del reporte'
+        required: true
+        default: 'Semanal'
+        type: choice
+        options:
+          - Semanal
+          - Mensual
+      dry_run:
+        description: 'Solo generar preview sin enviar correo'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  generate-newsletter:
+    name: Generar y Enviar Newsletter DPE
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar Agente y Generar Newsletter
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO_DPE: ${{ secrets.EMAIL_TO_DPE }}
+          EMAIL_TO_DG: ${{ secrets.EMAIL_TO_DG }}
+        run: |
+          AUDIENCE="${{ github.event.inputs.audience || 'DPE' }}"
+          FREQUENCY="${{ github.event.inputs.frequency || 'Semanal' }}"
+          DRY_RUN="${{ github.event.inputs.dry_run || 'false' }}"
+          
+          if [ "$DRY_RUN" = "true" ]; then
+            python main.py --audience "$AUDIENCE" --frequency "$FREQUENCY" --dry-run
+          else
+            python main.py --audience "$AUDIENCE" --frequency "$FREQUENCY" --send
+          fi
+
+      - name: Guardar Vista Previa HTML como Artefacto
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: newsletter-preview-${{ github.run_number }}
+          path: output/newsletter_preview.html
+          retention-days: 30

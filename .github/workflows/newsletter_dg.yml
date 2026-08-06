@@ -1,0 +1,55 @@
+name: 🏥 Monthly Newsletter - Dirección General
+
+on:
+  schedule:
+    # Primer lunes de cada mes a las 7:00 AM CDMX (UTC-6)
+    - cron: '0 13 1-7 * 1'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Solo generar preview sin enviar'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  generate-monthly-newsletter:
+    name: Reporte Mensual Direccion General
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar Agente - Reporte Mensual DG
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO_DG: ${{ secrets.EMAIL_TO_DG }}
+        run: |
+          DRY_RUN="${{ github.event.inputs.dry_run || 'false' }}"
+          if [ "$DRY_RUN" = "true" ]; then
+            python main.py --audience DG --frequency Mensual --dry-run
+          else
+            python main.py --audience DG --frequency Mensual --send
+          fi
+
+      - name: Guardar Preview como Artefacto
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: newsletter-dg-${{ github.run_number }}
+          path: output/newsletter_preview.html
+          retention-days: 90
