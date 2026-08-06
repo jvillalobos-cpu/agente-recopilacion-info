@@ -6,7 +6,7 @@ from src.models import NewsItem
 
 
 class GeminiDataCollector:
-    """Módulo de recolección de datos que utiliza Google Gemini / Búsqueda web."""
+    """Módulo de recolección de datos que utiliza Google Gemini / Búsqueda web asistida."""
 
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or os.getenv("GEMINI_API_KEY")
@@ -28,13 +28,13 @@ class GeminiDataCollector:
             from google import genai
             client = genai.Client(api_key=self.api_key)
             prompt = f"""
-            Actúa como un agente de inteligencia de mercado del sector salud en México y Latinoamérica.
+            Actúa como un agente de inteligencia de mercado del sector salud en México, Baja California y a nivel Internacional.
             Busca información pública reciente sobre: {query_hint}.
             
             RESTRICCIÓN ESTRICTA: Solo incluye noticias provenientes de estos dominios autorizados:
             {list(self.validator.whitelisted_domains)}
             
-            Formatea la respuesta como una lista de objetos JSON con las claves:
+            Formatea la respuesta como una lista JSON de objetos con las claves:
             - title (máx 10 palabras)
             - content (resumen factual de 2 a 3 renglones sin opiniones)
             - url (URL completa a la nota)
@@ -44,10 +44,8 @@ class GeminiDataCollector:
                 model="gemini-2.5-flash",
                 contents=prompt
             )
-            # Procesar y validar respuesta
             raw_text = response.text
             items = []
-            # Intentar parsear JSON
             data = json.loads(raw_text)
             for entry in data:
                 url = entry.get("url", "")
@@ -65,52 +63,52 @@ class GeminiDataCollector:
             return self._generate_mock_news(category)
 
     def _generate_mock_news(self, category: str) -> List[NewsItem]:
-        """Genera noticias de prueba altamente realistas validadas contra la lista blanca."""
+        """Genera noticias de prueba realistas basadas en las fuentes oficializadas (Macro, Nacional, Regional, Local)."""
         mock_db: Dict[str, List[Dict[str, str]]] = {
             "nota_principal": [
                 {
-                    "title": "COFEPRIS emite nueva regulación para pruebas diagnósticas de laboratorio",
-                    "content": "La Comisión Federal para la Protección contra Riesgos Sanitarios (COFEPRIS) anunció la actualización del marco regulatorio para la homologación de reactivos de diagnóstico clínico. La norma busca agilizar la introducción de tecnología de secuenciación genética en laboratorios privados y públicos.",
-                    "url": "https://www.gob.mx/cofepris/prensa/nueva-regulacion-diagnostico-2026",
+                    "title": "COFEPRIS y EMA actualizan criterios de acreditación para laboratorios moleculares",
+                    "content": "La Comisión Federal para la Protección contra Riesgos Sanitarios (COFEPRIS) en conjunto con la Entidad Mexicana de Acreditación (EMA) publicaron la nueva guía de homologación ISO 15189:2022. La norma agilizará la autorización de pruebas diagnósticas avanzadas en laboratorios públicos y privados.",
+                    "url": "https://www.gob.mx/cofepris/prensa/actualizacion-acreditacion-laboratorios-2026",
                     "source_domain": "cofepris.gob.mx"
                 }
             ],
             "competencia": [
                 {
-                    "title": "Grupo Diagnóstico del Norte adquiere 15 centros de toma de muestra",
-                    "content": "Con una inversión superior a 120 millones de pesos, la cadena fortalece su presencia en el bajío integrando nuevas tecnologías automatizadas de procesamiento rápido de química clínica y hematología.",
-                    "url": "https://www.elfinanciero.com.mx/empresas/adquisicion-laboratorios-bajio-2026",
-                    "source_domain": "elfinanciero.com.mx"
+                    "title": "Dark Daily reporta consolidación de cadenas de laboratorios de diagnóstico en Norteamérica",
+                    "content": "Un análisis de la industria destaca el incremento en fusiones estratégicas de laboratorios automatizados para reducir costos operativos en paneles genómicos. Las cadenas regionales adoptan inteligencia artificial para acelerar la entrega de resultados clínicos.",
+                    "url": "https://www.darkdaily.com/clinical-laboratory-trends-consolidation-2026",
+                    "source_domain": "darkdaily.com"
                 },
                 {
-                    "title": "Laboratorios SaludTotal lanza servicio de pruebas moleculares a domicilio",
-                    "content": "La compañía anunció la expansión de su plataforma digital que permite agendar pruebas especializadas a domicilio con entrega de resultados en menos de 12 horas mediante aplicación móvil.",
-                    "url": "https://www.eleconomista.com.mx/empresas/saludtotal-pruebas-moleculares-2026",
-                    "source_domain": "eleconomista.com.mx"
+                    "title": "Baja Health Cluster fortalece la oferta de servicios diagnósticos en la frontera",
+                    "content": "Directivos del clúster médico de Tijuana anunciaron un programa de alianzas con laboratorios acreditados para impulsar el turismo de salud transfronterizo con estándares de calidad internacionales.",
+                    "url": "https://bajahealthcluster.org/comunicados/impulso-turismo-salud-tijuana-2026",
+                    "source_domain": "bajahealthcluster.org"
                 }
             ],
             "sector_publico_salud": [
                 {
-                    "title": "Secretaría de Salud licitará abastecimiento integral de análisis clínicos",
-                    "content": "El gobierno federal publicó las bases de la licitación consolidada para la provisión de insumos y equipos de laboratorio en hospitales de segundo y tercer nivel para el periodo 2026-2027.",
-                    "url": "https://www.gob.mx/salud/prensa/licitacion-analisis-clinicos-2026",
-                    "source_domain": "gob.mx"
+                    "title": "Secretaría de Salud de BC emite boletín epidemiológico SVEET/SVEENT",
+                    "content": "La Secretaría de Salud de Baja California publicó la actualización epidemiológica sobre enfermedades crónicas no transmisibles. Se reforzará la toma de muestras preventivas en centros de salud de Tijuana y Mexicali.",
+                    "url": "https://www.saludbc.gob.mx/boletin-epidemiologico-bc-2026",
+                    "source_domain": "saludbc.gob.mx"
                 }
             ],
             "canales_informacion": [
                 {
-                    "title": "Aumento del 40% en búsquedas sobre marcadores tumorales en redes sociales",
-                    "content": "Un reporte de divulgación médica destaca el incremento en la interacción de usuarios respecto a pruebas preventivas de cáncer. Médicos especialistas en YouTube instan a realizar análisis anuales validados.",
-                    "url": "https://www.medscape.com/viewarticle/tendencias-divulgacion-medica-2026",
-                    "source_domain": "medscape.com"
+                    "title": "AMBC y ADLM anuncian serie de webinars sobre bioética e IA en el laboratorio",
+                    "content": "La Asociación Mexicana de Bioquímica Clínica (AMBC) en colaboración con ADLM llevarán a cabo capacitaciones virtuales sobre automatización diagnóstica y normatividad Sanitaria EducaPRiS.",
+                    "url": "https://www.ambc.org.mx/capacitaciones-webinars-2026",
+                    "source_domain": "ambc.org.mx"
                 }
             ],
             "sector_privado_salud": [
                 {
-                    "title": "Consorcio Hospitalario invierte 45 MDD en nuevo centro de alta especialidad",
-                    "content": "El proyecto incluirá una unidad avanzada de patología molecular e inteligencia artificial aplicada al diagnóstico temprano, consolidando la oferta privada de salud en la región metropolitana.",
-                    "url": "https://expansion.mx/empresas/inversion-hospitalaria-alta-especialidad-2026",
-                    "source_domain": "expansion.mx"
+                    "title": "Semanario ZETA reporta crecimiento del 25% en inversión de clínicas privadas en Tijuana",
+                    "content": "El sector de salud privado en la zona fronteriza registró la apertura de nuevos centros de atención médica y diagnóstico especializado, atrayendo pacientes de California y del noroeste de México.",
+                    "url": "https://zetatijuana.com/noticias/salud-economia-inversion-clinicas-tijuana-2026",
+                    "source_domain": "zetatijuana.com"
                 }
             ]
         }

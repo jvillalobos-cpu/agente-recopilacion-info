@@ -1,26 +1,60 @@
 {
   "whitelisted_domains": [
+    "darkdaily.com",
+    "myadlm.org",
+    "cdc.gov",
+    "nih.gov",
+    "cancer.gov",
     "gob.mx",
     "cofepris.gob.mx",
-    "imss.gob.mx",
-    "issste.gob.mx",
+    "consultorsalud.com",
+    "consultorsalud.com.mx",
+    "ema.org.mx",
+    "ambc.org.mx",
+    "inmegen.gob.mx",
+    "inp.edu.mx",
+    "elsudcaliforniano.com.mx",
+    "elmexicano.com.mx",
+    "saludbc.gob.mx",
+    "baja.gob.mx",
+    "zetatijuana.com",
+    "bajahealthcluster.org",
     "who.int",
     "paho.org",
-    "medscape.com",
     "elfinanciero.com.mx",
-    "eleconomista.com.mx",
-    "expansion.mx",
-    "reforma.com",
-    "eluniversal.com.mx",
-    "milenio.com",
-    "salud.gob.mx",
-    "insp.mx"
+    "eleconomista.com.mx"
   ],
+  "sources_by_tier": {
+    "macro_internacional": [
+      { "name": "Dark Daily E-Briefings & Webinars", "domain": "darkdaily.com" },
+      { "name": "Clinical Laboratory News (CLN) & ADLM", "domain": "myadlm.org" },
+      { "name": "CDC Traveler Genomic Reports", "domain": "cdc.gov" },
+      { "name": "NIH Cancer Bulletins", "domain": "cancer.gov" }
+    ],
+    "nacional_mexico": [
+      { "name": "Consultor Salud México", "domain": "consultorsalud.com" },
+      { "name": "Entidad Mexicana de Acreditación (EMA)", "domain": "ema.org.mx" },
+      { "name": "Asociación Mexicana de Bioquímica Clínica (AMBC)", "domain": "ambc.org.mx" },
+      { "name": "Canal Oficial COFEPRIS (EducaPRiS, REGULATE)", "domain": "cofepris.gob.mx" },
+      { "name": "INMEGEN & INP Comunicados de Prensa", "domain": "inmegen.gob.mx" }
+    ],
+    "regional_baja_california": [
+      { "name": "El Sudcaliforniano", "domain": "elsudcaliforniano.com.mx" },
+      { "name": "El Mexicano", "domain": "elmexicano.com.mx" },
+      { "name": "Secretaría de Salud de BC / Comités Epidemiológicos", "domain": "saludbc.gob.mx" },
+      { "name": "Periódico Oficial del Estado BC/BCS", "domain": "baja.gob.mx" }
+    ],
+    "local_tijuana": [
+      { "name": "Semanario ZETA (Sección Salud y Economía)", "domain": "zetatijuana.com" },
+      { "name": "Baja Health Cluster", "domain": "bajahealthcluster.org" },
+      { "name": "COEPRIS Tijuana", "domain": "saludbc.gob.mx" }
+    ]
+  },
   "categories": {
     "nota_principal": "Noticias de mayor impacto nacional o internacional en salud y diagnóstico médico de laboratorio.",
     "competencia": "Movimientos de mercado, alianzas, adquisiciones y nuevos servicios de laboratorios clínicos y salud privada.",
-    "sector_publico_salud": "Políticas públicas, adquisiciones gubernamentales, regulaciones COFEPRIS y programas de salud del gobierno.",
-    "canales_informacion": "Tendencias en redes sociales, comunicados médicos, divulgación médica relevante y YouTube.",
-    "sector_privado_salud": "Inversiones privadas, clínicas, aseguradoras, tecnología médica y desarrollo hospitalario."
+    "sector_publico_salud": "Políticas públicas, regulaciones COFEPRIS, acreditaciones EMA y comunicados epidemiológicos gubernamentales.",
+    "canales_informacion": "Webinars de la EMA, capacitaciones AMBC, podcasts ADLM, contenidos de regulación sanitaria y redes oficiales.",
+    "sector_privado_salud": "Baja Health Cluster, turismo de salud transfronterizo, inversiones privadas, clínicas y laboratorios regionales."
   }
 }
