@@ -1,0 +1,29 @@
+# Reglas de Seguridad y Restricciones del Agente (Guardrails)
+
+guardrails:
+  max_lines_per_summary: 3
+  min_lines_per_summary: 2
+  require_original_url: true
+  allow_unverified_sources: false
+  opinion_filtering: true # Filtrar opiniones, especulaciones o notas sin fuente verificable.
+
+output_format:
+  sections:
+    - id: "nota_principal"
+      title: "1. Nota Principal de Relevancia"
+      required: true
+    - id: "competencia"
+      title: "2. Movimientos de la Competencia"
+      required: true
+    - id: "sector_publico_salud"
+      title: "3. Sector Público Salud & Regulación"
+      required: true
+    - id: "canales_informacion"
+      title: "4. Canales de Información & Tendencias Médicas"
+      required: true
+    - id: "sector_privado_salud"
+      title: "5. Sector Privado Salud & Mercado"
+      required: true
+    - id: "resumen_bullet_points"
+      title: "6. Resumen Ejecutivo (Bullet Points)"
+      required: true

@@ -1,0 +1,18 @@
+# Entorno de Python y ejecución
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+
+# Claves y secretos
+.env
+.env.local
+*.pem
+
+# Archivos generados y logs
+output/
+*.log
+.pytest_cache/

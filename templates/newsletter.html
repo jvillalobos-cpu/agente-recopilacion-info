@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ report.title }}</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background-color: #f4f7f9;
+      color: #1e293b;
+      margin: 0;
+      padding: 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+    }
+    .header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 32px 28px;
+      text-align: left;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+    .header h1 {
+      margin: 0 0 8px 0;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .header-meta {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .content {
+      padding: 28px;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+      margin-top: 24px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+    }
+    .card {
+      background: #f8fafc;
+      border-left: 4px solid #3b82f6;
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .card.primary {
+      background: #eff6ff;
+      border-left-color: #2563eb;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1e293b;
+      margin: 0 0 8px 0;
+    }
+    .card-body {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: #475569;
+      margin: 0 0 10px 0;
+    }
+    .card-link {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2563eb;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .card-link:hover {
+      text-decoration: underline;
+    }
+    .summary-box {
+      background: #0f172a;
+      color: #f8fafc;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 28px;
+    }
+    .summary-box h3 {
+      margin: 0 0 12px 0;
+      font-size: 15px;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .summary-box ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .summary-box li {
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .footer {
+      background: #f1f5f9;
+      padding: 20px 28px;
+      font-size: 12px;
+      color: #64748b;
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <span class="badge">Inteligencia de Mercado · {{ report.target_audience }}</span>
+      <h1>{{ report.title }}</h1>
+      <div class="header-meta">
+        Edición {{ report.frequency }} · {{ report.edition_date }}
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+      <!-- Nota Principal -->
+      {% if report.nota_principal %}
+      <div class="section-title">📌 1. Nota Principal de Relevancia</div>
+      <div class="card primary">
+        <h3 class="card-title">{{ report.nota_principal.title }}</h3>
+        <p class="card-body">{{ report.nota_principal.content }}</p>
+        <a href="{{ report.nota_principal.url }}" target="_blank" class="card-link">🔗 Leer nota completa en {{ report.nota_principal.source_domain }} &rarr;</a>
+      </div>
+      {% endif %}
+
+      <!-- Competencia -->
+      {% if report.competencia %}
+      <div class="section-title">🏢 2. Movimientos de la Competencia</div>
+      {% for item in report.competencia %}
+      <div class="card">
+        <h3 class="card-title">{{ item.title }}</h3>
+        <p class="card-body">{{ item.content }}</p>
+        <a href="{{ item.url }}" target="_blank" class="card-link">🔗 Fuente: {{ item.source_domain }} &rarr;</a>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      <!-- Sector Público Salud -->
+      {% if report.sector_publico %}
+      <div class="section-title">🏛️ 3. Sector Público Salud & Regulación</div>
+      {% for item in report.sector_publico %}
+      <div class="card">
+        <h3 class="card-title">{{ item.title }}</h3>
+        <p class="card-body">{{ item.content }}</p>
+        <a href="{{ item.url }}" target="_blank" class="card-link">🔗 Fuente: {{ item.source_domain }} &rarr;</a>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      <!-- Canales de Información -->
+      {% if report.canales_informacion %}
+      <div class="section-title">📢 4. Canales de Información & Tendencias Médicas</div>
+      {% for item in report.canales_informacion %}
+      <div class="card">
+        <h3 class="card-title">{{ item.title }}</h3>
+        <p class="card-body">{{ item.content }}</p>
+        <a href="{{ item.url }}" target="_blank" class="card-link">🔗 Fuente: {{ item.source_domain }} &rarr;</a>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      <!-- Sector Privado Salud -->
+      {% if report.sector_privado %}
+      <div class="section-title">🩺 5. Sector Privado Salud & Mercado</div>
+      {% for item in report.sector_privado %}
+      <div class="card">
+        <h3 class="card-title">{{ item.title }}</h3>
+        <p class="card-body">{{ item.content }}</p>
+        <a href="{{ item.url }}" target="_blank" class="card-link">🔗 Fuente: {{ item.source_domain }} &rarr;</a>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      <!-- Resumen Ejecutivo Bullet Points -->
+      {% if report.resumen_ejecutivo %}
+      <div class="summary-box">
+        <h3>⚡ Resumen Ejecutivo en Bullet Points</h3>
+        <ul>
+          {% for bullet in report.resumen_ejecutivo %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Este informe fue generado automáticamente por el <strong>Agente de Inteligencia de Mercado DPE</strong>.</p>
+      <p>Fuentes auditadas y validadas mediante lista blanca de seguridad. Privado y Confidencial.</p>
+    </div>
+  </div>
+
+</body>
+</html>

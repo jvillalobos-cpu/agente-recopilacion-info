@@ -1,0 +1,26 @@
+{
+  "whitelisted_domains": [
+    "gob.mx",
+    "cofepris.gob.mx",
+    "imss.gob.mx",
+    "issste.gob.mx",
+    "who.int",
+    "paho.org",
+    "medscape.com",
+    "elfinanciero.com.mx",
+    "eleconomista.com.mx",
+    "expansion.mx",
+    "reforma.com",
+    "eluniversal.com.mx",
+    "milenio.com",
+    "salud.gob.mx",
+    "insp.mx"
+  ],
+  "categories": {
+    "nota_principal": "Noticias de mayor impacto nacional o internacional en salud y diagnóstico médico de laboratorio.",
+    "competencia": "Movimientos de mercado, alianzas, adquisiciones y nuevos servicios de laboratorios clínicos y salud privada.",
+    "sector_publico_salud": "Políticas públicas, adquisiciones gubernamentales, regulaciones COFEPRIS y programas de salud del gobierno.",
+    "canales_informacion": "Tendencias en redes sociales, comunicados médicos, divulgación médica relevante y YouTube.",
+    "sector_privado_salud": "Inversiones privadas, clínicas, aseguradoras, tecnología médica y desarrollo hospitalario."
+  }
+}
