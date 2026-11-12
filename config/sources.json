@@ -72,7 +72,8 @@
     "questdiagnostics.com",
     "epic.com",
     "ehealthreporter.com",
-    "blog.google"
+    "blog.google",
+    "nice.org.uk"
   ],
   "sources_by_tier": {
     "macro_internacional": [
@@ -84,7 +85,8 @@
       { "name": "360Dx", "domain": "360dx.com" },
       { "name": "Abbott Newsroom", "domain": "abbott.mediaroom.com" },
       { "name": "Bloomberg", "domain": "bloomberg.com" },
-      { "name": "Google (blog oficial)", "domain": "blog.google" }
+      { "name": "Google (blog oficial)", "domain": "blog.google" },
+      { "name": "NICE (National Institute for Health and Care Excellence, UK)", "domain": "nice.org.uk" }
     ],
     "nacional_mexico": [
       { "name": "Presidencia de la República (versión estenográfica de la mañanera; bloque de salud/IMSS/ISSSTE/IMSS-Bienestar, habitualmente los martes)", "domain": "gob.mx" },

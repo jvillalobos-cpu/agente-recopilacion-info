@@ -451,6 +451,17 @@
       "source_domain": "blog.google",
       "category": "ia_salud_laboratorios",
       "published_date": "2026-11-10"
+    },
+    {
+      "entity_name": "NICE (National Institute for Health and Care Excellence, UK)",
+      "entity_type": "institucion_regulatoria",
+      "platform": "Documento corporativo oficial",
+      "title": "NICE publica su nuevo marco sobre el uso de IA para generar y evaluar evidencia sanitaria (ECD20)",
+      "content": "NICE (Reino Unido) publico 'AI methods for evidence framework' (ECD20), documento de 90 paginas que sustituye a ECD11 y ECD12, con principios y recomendaciones para el uso de IA en actividades que generan, analizan y sintetizan la evidencia que informa sus decisiones de evaluacion de tecnologias sanitarias (HTA) y guias clinicas. El marco establece 10 principios en 4 ambitos (uso responsable, gobernanza, garantias metodologicas y confianza en la evidencia), cubriendo validacion, supervision humana, equidad, reproducibilidad, explicabilidad y transparencia. Diferencia tres niveles de participacion de la IA (apoyo, semiautomatizacion, automatizacion completa) segun el proceso: en cribado de titulos/resumenes admite automatizacion con garantias exigentes; en revision de textos completos y evaluacion critica/sintesis de evidencia NO recomienda automatizacion completa por la limitada madurez de la evidencia y riesgos metodologicos; en extraccion de datos exige verificar los datos extraidos frente a fuentes originales. No revisa ni avala herramientas o modelos especificos. Documento publicado el 9 de noviembre de 2026; relevante como referencia de gobernanza para cualquier laboratorio clinico que empiece a usar IA en generacion/evaluacion de evidencia.",
+      "url": "https://www.nice.org.uk/corporate/ecd20",
+      "source_domain": "nice.org.uk",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-09"
     }
   ]
 }
