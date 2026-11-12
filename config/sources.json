@@ -13,48 +13,205 @@
     "ambc.org.mx",
     "inmegen.gob.mx",
     "inp.edu.mx",
+    "semar.gob.mx",
     "elsudcaliforniano.com.mx",
     "elmexicano.com.mx",
     "saludbc.gob.mx",
     "baja.gob.mx",
+    "coplade.baja.gob.mx",
     "zetatijuana.com",
     "bajahealthcluster.org",
     "who.int",
     "paho.org",
     "elfinanciero.com.mx",
-    "eleconomista.com.mx"
+    "eleconomista.com.mx",
+    "saludiario.com",
+    "gerenciaynegocios.com",
+    "industrialnewsbc.com",
+    "genomeweb.com",
+    "360dx.com",
+    "dof.gob.mx",
+    "elimparcial.com",
+    "uniradioinforma.com",
+    "informadornorte.com",
+    "almomento.mx",
+    "salud-digna.org",
+    "chopo.com.mx",
+    "lexlatin.com",
+    "milenio.com",
+    "oem.com.mx",
+    "youtube.com",
+    "linkedin.com",
+    "medikit.com.mx",
+    "asociacionhealthtech.mx",
+    "inegi.org.mx",
+    "expansion.mx",
+    "lasillarota.com",
+    "elpost.mx",
+    "serpientesyescaleras.mx",
+    "lucesdelsiglo.com",
+    "capitalmexico.com.mx",
+    "zalutt.com",
+    "infobae.com",
+    "laprensagrafica.com",
+    "facebook.com",
+    "instagram.com",
+    "trabajosmediotiempotijuana.com",
+    "computrabajo.com",
+    "ecosderosarito.com",
+    "lnkd.in",
+    "abbott.mediaroom.com",
+    "sumedico.com",
+    "bloomberg.com",
+    "puntonorte.info",
+    "ectorjaime.mx",
+    "weecompany.net",
+    "medsummit.org",
+    "abbott.com",
+    "quidelortho.com",
+    "questdiagnostics.com",
+    "epic.com",
+    "ehealthreporter.com",
+    "blog.google"
   ],
   "sources_by_tier": {
     "macro_internacional": [
-      { "name": "Dark Daily E-Briefings & Webinars", "domain": "darkdaily.com" },
-      { "name": "Clinical Laboratory News (CLN) & ADLM", "domain": "myadlm.org" },
-      { "name": "CDC Traveler Genomic Reports", "domain": "cdc.gov" },
-      { "name": "NIH Cancer Bulletins", "domain": "cancer.gov" }
+      { "name": "Dark Daily / The Dark Intelligence Group", "domain": "darkdaily.com" },
+      { "name": "ADLM (Clinical Laboratory News / CLN Daily)", "domain": "myadlm.org" },
+      { "name": "CDC", "domain": "cdc.gov" },
+      { "name": "NIH", "domain": "nih.gov" },
+      { "name": "GenomeWeb", "domain": "genomeweb.com" },
+      { "name": "360Dx", "domain": "360dx.com" },
+      { "name": "Abbott Newsroom", "domain": "abbott.mediaroom.com" },
+      { "name": "Bloomberg", "domain": "bloomberg.com" },
+      { "name": "Google (blog oficial)", "domain": "blog.google" }
     ],
     "nacional_mexico": [
+      { "name": "Presidencia de la República (versión estenográfica de la mañanera; bloque de salud/IMSS/ISSSTE/IMSS-Bienestar, habitualmente los martes)", "domain": "gob.mx" },
+      { "name": "COFEPRIS (EducaPRiS / DIGIPRiS / VUCEM)", "domain": "cofepris.gob.mx" },
+      { "name": "EMA (ISO 15189:2022 / ISO 17043)", "domain": "ema.org.mx" },
+      { "name": "INMEGEN", "domain": "inmegen.gob.mx" },
+      { "name": "INP", "domain": "inp.edu.mx" },
+      { "name": "Su Médico", "domain": "sumedico.com" },
+      { "name": "SEMAR", "domain": "semar.gob.mx" },
+      { "name": "AMBC", "domain": "ambc.org.mx" },
       { "name": "Consultor Salud México", "domain": "consultorsalud.com" },
-      { "name": "Entidad Mexicana de Acreditación (EMA)", "domain": "ema.org.mx" },
-      { "name": "Asociación Mexicana de Bioquímica Clínica (AMBC)", "domain": "ambc.org.mx" },
-      { "name": "Canal Oficial COFEPRIS (EducaPRiS, REGULATE)", "domain": "cofepris.gob.mx" },
-      { "name": "INMEGEN & INP Comunicados de Prensa", "domain": "inmegen.gob.mx" }
+      { "name": "Diario Oficial de la Federación (DOF)", "domain": "dof.gob.mx" }
     ],
     "regional_baja_california": [
+      { "name": "Secretaría de Salud de BC (Boletines SVEET/SVEENT, SISVER/USMER)", "domain": "saludbc.gob.mx" },
+      { "name": "COPLADE (Programa Sectorial de Salud BC)", "domain": "coplade.baja.gob.mx" },
+      { "name": "Periódico Oficial del Estado BC/BCS", "domain": "baja.gob.mx" },
       { "name": "El Sudcaliforniano", "domain": "elsudcaliforniano.com.mx" },
       { "name": "El Mexicano", "domain": "elmexicano.com.mx" },
-      { "name": "Secretaría de Salud de BC / Comités Epidemiológicos", "domain": "saludbc.gob.mx" },
-      { "name": "Periódico Oficial del Estado BC/BCS", "domain": "baja.gob.mx" }
+      { "name": "El Imparcial", "domain": "elimparcial.com" },
+      { "name": "Uniradio Informa", "domain": "uniradioinforma.com" },
+      { "name": "Informador Norte", "domain": "informadornorte.com" },
+      { "name": "Almomento", "domain": "almomento.mx" },
+      { "name": "Punto Norte", "domain": "puntonorte.info" }
     ],
     "local_tijuana": [
+      { "name": "Baja Health Cluster (BHC)", "domain": "bajahealthcluster.org" },
       { "name": "Semanario ZETA (Sección Salud y Economía)", "domain": "zetatijuana.com" },
-      { "name": "Baja Health Cluster", "domain": "bajahealthcluster.org" },
-      { "name": "COEPRIS Tijuana", "domain": "saludbc.gob.mx" }
+      { "name": "COEPRIS BC", "domain": "saludbc.gob.mx" },
+      { "name": "Industrial News BC", "domain": "industrialnewsbc.com" },
+      { "name": "Ecos de Rosarito", "domain": "ecosderosarito.com" }
+    ],
+    "cobertura_negocios_salud": [
+      { "name": "Saludiario", "domain": "saludiario.com" },
+      { "name": "Gerencia y Negocios", "domain": "gerenciaynegocios.com" },
+      { "name": "LexLatin (M&A / legal negocios LatAm)", "domain": "lexlatin.com" },
+      { "name": "Milenio", "domain": "milenio.com" },
+      { "name": "Expansión Política", "domain": "expansion.mx" },
+      { "name": "La Silla Rota", "domain": "lasillarota.com" },
+      { "name": "El Post", "domain": "elpost.mx" },
+      { "name": "Serpientes y Escaleras", "domain": "serpientesyescaleras.mx" },
+      { "name": "Luces del Siglo", "domain": "lucesdelsiglo.com" },
+      { "name": "Capital México", "domain": "capitalmexico.com.mx" },
+      { "name": "Infobae México", "domain": "infobae.com" },
+      { "name": "La Prensa Gráfica (El Salvador)", "domain": "laprensagrafica.com" }
+    ],
+    "competencia_directa": [
+      { "name": "Salud Digna (sitio oficial)", "domain": "salud-digna.org" },
+      { "name": "Laboratorio Médico del Chopo (sitio oficial)", "domain": "chopo.com.mx" },
+      { "name": "Medikit (sitio oficial)", "domain": "medikit.com.mx" },
+      { "name": "Zalutt Health Lab (sitio oficial)", "domain": "zalutt.com" }
+    ],
+    "asociaciones_sitio_oficial": [
+      { "name": "Asociación HealthTech México (sitio oficial)", "domain": "asociacionhealthtech.mx" }
+    ],
+    "personas_de_interes_sitio_oficial": [
+      { "name": "Blog Dr. Éctor Jaime Ramírez Barba (sitio oficial)", "domain": "ectorjaime.mx" }
+    ],
+    "canales_informacion_salud_digital": [
+      { "name": "WeeCompany (sitio oficial)", "domain": "weecompany.net" }
+    ],
+    "eventos_sector_salud": [
+      { "name": "MedSummit (Clúster de Productos Médicos de Baja California, sitio oficial)", "domain": "medsummit.org" }
+    ],
+    "fuentes_permanentes_monitoreadas": [
+      { "name": "Abbott Laboratories (sitio oficial)", "domain": "abbott.com" },
+      { "name": "QuidelOrtho (sitio oficial)", "domain": "quidelortho.com" },
+      { "name": "Quest Diagnostics (sitio oficial)", "domain": "questdiagnostics.com" },
+      { "name": "Epic Systems Corporation (sitio oficial)", "domain": "epic.com" },
+      { "name": "eHealth Reporter (noticias de salud digital)", "domain": "ehealthreporter.com" }
+    ],
+    "redes_sociales_oficiales_gobierno": [
+      { "name": "Gobierno de Tijuana (Facebook oficial)", "domain": "facebook.com" },
+      { "name": "Gobierno de Tijuana (Instagram oficial)", "domain": "instagram.com" }
+    ],
+    "bolsas_de_trabajo": [
+      { "name": "Trabajos Medio Tiempo Tijuana", "domain": "trabajosmediotiempotijuana.com" },
+      { "name": "Computrabajo", "domain": "computrabajo.com" }
+    ],
+    "regional_baja_california_oem": [
+      { "name": "El Sol de Tijuana / Organización Editorial Mexicana", "domain": "oem.com.mx" }
     ]
   },
+  "canales_youtube_oficiales": [
+    { "name": "COFEPRIS", "channel_id": "UC3M354uj-jxeYT2dzo9o2yQ" },
+    { "name": "ADLM (Association for Diagnostics & Laboratory Medicine)", "channel_id": "UCG45hMChrxiQjuFc3CiF87A" },
+    { "name": "Baja Health Cluster", "channel_id": "UCN-zFb3HaG3yngBxk7enRVw" }
+  ],
+  "competidores_monitoreados": [
+    "Salud Digna", "Chopo", "Quest", "Klein", "LabExpress", "Gamboa", "Castro", "Inca", "GlobalBC", "Medikit", "Zalutt"
+  ],
+  "fuentes_permanentes_siempre_monitorear": [
+    "Abbott Laboratories", "QuidelOrtho", "Quest Diagnostics", "Epic Systems Corporation", "eHealth Reporter"
+  ],
+  "redes_hospitalarias_binacionales": [
+    "Hospital del Prado", "SIMNSA", "Excel", "Angeles"
+  ],
+  "asociaciones_monitoreadas": [
+    "HealthTech México"
+  ],
+  "personas_de_interes": [
+    "Bruno Valera",
+    "Ector Jaime Ramírez Barba",
+    "Atzimba Villegas"
+  ],
+  "perfiles_redes_sociales_verificados": [
+    { "entity_name": "Bruno Valera", "entity_type": "persona", "platform": "LinkedIn", "url": "https://www.linkedin.com/in/brunovalera/" },
+    { "entity_name": "Ector Jaime Ramírez Barba", "entity_type": "persona", "platform": "LinkedIn", "url": "https://mx.linkedin.com/in/ectorjaime" },
+    { "entity_name": "Atzimba Villegas", "entity_type": "persona", "platform": "LinkedIn", "url": "https://www.linkedin.com/in/atzimba-villegas-56604b20/" },
+    { "entity_name": "Medikit", "entity_type": "competidor", "platform": "LinkedIn", "url": "https://mx.linkedin.com/company/medikitmx" },
+    { "entity_name": "HealthTech México", "entity_type": "asociacion", "platform": "LinkedIn", "url": "https://mx.linkedin.com/company/ahmx" }
+  ],
+  "publicaciones_pendientes_de_detalle": [
+    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/gE6a8unV" },
+    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/g4XyKfB7" },
+    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/gQ_PX-tV" },
+    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/gB4pUQ-R" },
+    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/gKjWUKmm" },
+    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/g8Kc66FE" },
+    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/guvRTHem" }
+  ],
   "categories": {
-    "nota_principal": "Noticias de mayor impacto nacional o internacional en salud y diagnóstico médico de laboratorio.",
-    "competencia": "Movimientos de mercado, alianzas, adquisiciones y nuevos servicios de laboratorios clínicos y salud privada.",
-    "sector_publico_salud": "Políticas públicas, regulaciones COFEPRIS, acreditaciones EMA y comunicados epidemiológicos gubernamentales.",
-    "canales_informacion": "Webinars de la EMA, capacitaciones AMBC, podcasts ADLM, contenidos de regulación sanitaria y redes oficiales.",
-    "sector_privado_salud": "Baja Health Cluster, turismo de salud transfronterizo, inversiones privadas, clínicas y laboratorios regionales."
+    "nota_principal": "Noticias de mayor impacto estratégico o regulatorio de la semana.",
+    "competencia": "Movimientos de mercado, alianzas, adquisiciones y nuevos servicios de laboratorios clínicos y salud privada (ver competidores_monitoreados).",
+    "sector_publico_salud": "Secretaría de Salud, IMSS, ISSSTE, IMSS-Bienestar, COFEPRIS, EMA, Congreso/Comisión de Salud.",
+    "canales_informacion": "Avances tecnológicos, LIS, AI en diagnóstico, ISO 15189:2022, webinars, YouTube oficial.",
+    "sector_privado_salud": "Hospitales privados, Baja Health Cluster, aseguradoras y dinámica transfronteriza (turismo médico).",
+    "ia_salud_laboratorios": "Inteligencia artificial aplicada específicamente a salud, diagnóstico y laboratorios clínicos: startups, modelos, herramientas y adopción clínica (no IA genérica)."
   }
 }

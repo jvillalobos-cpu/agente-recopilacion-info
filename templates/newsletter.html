@@ -4,498 +4,476 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ report.title }}</title>
+  <meta property="og:title" content="{{ report.title }} — {{ report.edition_date }}">
+  <meta property="og:description" content="Boletín {{ report.frequency }} de inteligencia de mercado y sector salud para {{ report.target_audience }}, Certus Laboratorio.">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+    :root {
+      --navy: #0b2540;
+      --navy-deep: #071a30;
+      --teal: #0ea5a0;
+      --gold: #e0a63a;
+      --violet: #7d5fc4;
+      --ink: #1a2634;
+      --muted: #64748b;
+      --line: #e6eaf1;
+      --paper: #f5f7fb;
+      --card: #ffffff;
+    }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background-color: #0d1117;
-      color: #c9d1d9;
+      background: var(--paper);
+      color: var(--ink);
       -webkit-font-smoothing: antialiased;
-      padding: 32px 16px;
+      padding: 14px 10px;
     }
 
-    .wrapper {
-      max-width: 700px;
-      margin: 0 auto;
+    /* Mobile-first: una sola columna por defecto, pensado para abrirse en WhatsApp/navegador de celular */
+    .wrapper { max-width: 600px; margin: 0 auto; }
+
+    /* ── Topbar ── */
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 2px 12px;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .topbar-meta {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
     }
 
-    /* ── Header ── */
-    .header {
-      background: linear-gradient(135deg, #0a1628 0%, #0d2453 60%, #0f3460 100%);
-      border-radius: 16px 16px 0 0;
-      padding: 36px 36px 28px;
+    /* ── Masthead ── */
+    .masthead {
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 55%, #123a63 100%);
+      border-radius: 16px;
+      padding: 22px 20px;
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(48, 130, 245, 0.25);
-      border-bottom: none;
+      margin-bottom: 16px;
     }
-    .header::before {
+    .masthead::before {
       content: '';
       position: absolute;
       top: -60px; right: -60px;
-      width: 220px; height: 220px;
-      background: radial-gradient(circle, rgba(56, 139, 253, 0.15) 0%, transparent 70%);
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(14, 165, 160, 0.35) 0%, transparent 70%);
       border-radius: 50%;
     }
-    .header-meta-row {
+    .masthead-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+      gap: 6px;
     }
-    .badge {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(56, 139, 253, 0.15);
-      color: #58a6ff;
-      border: 1px solid rgba(56, 139, 253, 0.3);
-      padding: 5px 14px;
+      background: rgba(14, 165, 160, 0.16);
+      border: 1px solid rgba(14, 165, 160, 0.4);
+      color: #7fe3dd;
+      padding: 5px 11px;
       border-radius: 20px;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      letter-spacing: 0.7px;
     }
-    .badge-dot {
+    .eyebrow-dot {
       width: 6px; height: 6px;
-      background: #58a6ff;
+      background: #2ee6d6;
       border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+      box-shadow: 0 0 0 3px rgba(46, 230, 214, 0.2);
     }
     .edition-tag {
       font-size: 11px;
-      color: #8b949e;
+      color: rgba(230, 238, 248, 0.65);
       font-weight: 500;
     }
-    .header h1 {
+    .masthead h1 {
+      font-family: 'Sora', sans-serif;
       font-size: 26px;
       font-weight: 800;
-      color: #f0f6fc;
-      line-height: 1.25;
       letter-spacing: -0.5px;
+      color: #f4f8fc;
+      position: relative;
+      z-index: 1;
       margin-bottom: 6px;
     }
-    .header-subtitle {
-      font-size: 13px;
-      color: #8b949e;
-      font-weight: 400;
+    .masthead h2 {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: rgba(230, 238, 248, 0.7);
+      position: relative;
+      z-index: 1;
     }
 
-    /* ── Stats bar ── */
-    .stats-bar {
-      background: rgba(22, 27, 34, 0.9);
-      border-left: 1px solid rgba(48, 130, 245, 0.25);
-      border-right: 1px solid rgba(48, 130, 245, 0.25);
-      display: flex;
-      padding: 14px 36px;
-      gap: 32px;
-    }
-    .stat {
+    /* ── Section label ── */
+    .section-label {
       display: flex;
       align-items: center;
       gap: 8px;
+      margin: 20px 2px 10px;
     }
-    .stat-icon {
-      font-size: 14px;
-    }
-    .stat-label {
-      font-size: 10px;
-      color: #6e7681;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .stat-value {
-      font-size: 12px;
-      color: #e6edf3;
-      font-weight: 600;
-    }
-
-    /* ── Content ── */
-    .content {
-      background: #161b22;
-      border: 1px solid rgba(48, 130, 245, 0.15);
-      border-top: none;
-      border-bottom: none;
-      padding: 28px 36px;
-    }
-
-    /* ── Section header ── */
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 28px 0 14px;
-    }
-    .section-header:first-child {
-      margin-top: 0;
-    }
-    .section-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
+    .summary-card + .section-label,
+    .masthead + .section-label { margin-top: 0; }
+    .section-num {
+      width: 23px; height: 23px;
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800;
+      color: #fff;
       flex-shrink: 0;
     }
-    .icon-main { background: rgba(56, 139, 253, 0.15); border: 1px solid rgba(56, 139, 253, 0.3); }
-    .icon-comp { background: rgba(248, 81, 73, 0.12); border: 1px solid rgba(248, 81, 73, 0.25); }
-    .icon-pub  { background: rgba(46, 160, 67, 0.12); border: 1px solid rgba(46, 160, 67, 0.25); }
-    .icon-chan { background: rgba(210, 153, 34, 0.12); border: 1px solid rgba(210, 153, 34, 0.25); }
-    .icon-priv { background: rgba(163, 113, 247, 0.12); border: 1px solid rgba(163, 113, 247, 0.25); }
-
-    .section-title-text {
-      font-size: 13px;
+    .section-label span.text {
+      font-size: 11px;
       font-weight: 700;
-      color: #e6edf3;
       text-transform: uppercase;
       letter-spacing: 0.6px;
+      color: var(--muted);
     }
-    .section-divider {
-      flex: 1;
-      height: 1px;
-      background: rgba(48, 54, 61, 0.8);
-    }
+    .num-sum  { background: var(--navy); }
+    .num-main { background: var(--teal); }
+    .num-comp { background: #d9534f; }
+    .num-pub  { background: #4b8bbe; }
+    .num-ia   { background: var(--violet); }
+    .num-chan { background: var(--gold); }
+    .num-priv { background: #7d5fc4; }
 
-    /* ── News Cards ── */
+    /* ── Cards ── */
     .card {
-      background: #0d1117;
-      border: 1px solid #21262d;
-      border-radius: 10px;
-      padding: 16px 18px;
-      margin-bottom: 10px;
-      transition: border-color 0.2s;
-      position: relative;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px 18px;
+      margin-bottom: 4px;
+      box-shadow: 0 6px 18px -10px rgba(11, 37, 64, 0.12);
     }
-    .card.primary {
-      border-color: rgba(56, 139, 253, 0.35);
-      background: rgba(56, 139, 253, 0.04);
-    }
-    .card.primary::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 14px; bottom: 14px;
-      width: 3px;
-      background: #388bfd;
-      border-radius: 0 3px 3px 0;
-    }
-    .card-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: #e6edf3;
-      margin-bottom: 7px;
-      line-height: 1.4;
-    }
-    .card-body {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #8b949e;
-      margin-bottom: 10px;
-    }
-    .card-footer {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .source-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: #21262d;
-      border: 1px solid #30363d;
-      border-radius: 5px;
-      padding: 3px 8px;
-      font-size: 11px;
-      color: #8b949e;
-      font-weight: 500;
-    }
-    .source-dot {
-      width: 5px; height: 5px;
-      background: #388bfd;
-      border-radius: 50%;
-    }
-    .card-link {
-      font-size: 11px;
-      font-weight: 600;
-      color: #388bfd;
-      text-decoration: none;
-      margin-left: auto;
-    }
-    .card-link:hover { text-decoration: underline; }
+    .card.accent-main { border-top: 3px solid var(--teal); }
+    .card.accent-comp { border-top: 3px solid #d9534f; }
+    .card.accent-pub  { border-top: 3px solid #4b8bbe; }
+    .card.accent-ia   { border-top: 3px solid var(--violet); }
+    .card.accent-chan { border-top: 3px solid var(--gold); }
+    .card.accent-priv { border-top: 3px solid #7d5fc4; }
 
-    /* ── Summary Box ── */
-    .summary-box {
-      background: linear-gradient(135deg, #0a1628 0%, #0d1f40 100%);
-      border: 1px solid rgba(56, 139, 253, 0.3);
-      border-radius: 12px;
-      padding: 22px 24px;
-      margin-top: 28px;
-    }
-    .summary-title {
-      font-size: 11px;
+    .item { padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+    .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .item-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
       font-weight: 700;
-      color: #388bfd;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      color: var(--navy-deep);
+      line-height: 1.4;
+      margin-bottom: 7px;
     }
-    .summary-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(56, 139, 253, 0.2);
+    .card.accent-main .item-title { font-size: 18px; }
+
+    .item-body {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #4b5a70;
+      margin-bottom: 10px;
     }
-    .summary-item {
+    .card.accent-main .item-body { font-size: 14px; }
+
+    .item-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .source-tag {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+    .item-link {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .item-link:hover { text-decoration: underline; }
+
+    .empty-note {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    /* Todas las secciones se apilan verticalmente (mobile-first / WhatsApp) */
+    .block { margin-bottom: 18px; }
+
+    /* ── Summary (al inicio del boletín) ── */
+    .summary-card {
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+      border-radius: 16px;
+      padding: 20px 18px;
+      margin-bottom: 4px;
+      box-shadow: 0 10px 24px -12px rgba(11, 37, 64, 0.4);
+    }
+    .summary-card .section-label span.text { color: rgba(230, 238, 248, 0.6); }
+    .summary-row {
       display: flex;
       align-items: flex-start;
       gap: 10px;
-      margin-bottom: 10px;
-      font-size: 13px;
-      color: #c9d1d9;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 13.5px;
+      color: #e6eef8;
       line-height: 1.5;
     }
-    .summary-item:last-child { margin-bottom: 0; }
-    .summary-bullet {
-      width: 18px;
-      height: 18px;
-      background: rgba(56, 139, 253, 0.15);
-      border: 1px solid rgba(56, 139, 253, 0.4);
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .summary-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .summary-check {
+      width: 19px; height: 19px;
+      border-radius: 6px;
+      background: rgba(14, 165, 160, 0.2);
+      border: 1px solid rgba(46, 230, 214, 0.4);
+      color: #2ee6d6;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 800;
       flex-shrink: 0;
       margin-top: 1px;
     }
-    .summary-bullet span {
-      font-size: 9px;
-      color: #58a6ff;
-      font-weight: 800;
+    a.summary-row {
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 8px;
+      margin: 0 -8px;
+      padding: 11px 8px;
+      transition: background 0.15s;
     }
+    a.summary-row:hover { background: rgba(255,255,255,0.06); }
+    a.summary-row:hover .summary-check { background: #2ee6d6; color: var(--navy-deep); }
+    .summary-source {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #7fe3dd;
+      margin-top: 4px;
+    }
+    .summary-source::after { content: ' · Ver nota →'; color: rgba(230,238,248,0.55); font-weight: 500; }
 
     /* ── Footer ── */
     .footer {
-      background: #0d1117;
-      border: 1px solid rgba(48, 130, 245, 0.15);
-      border-top: 1px solid #21262d;
-      border-radius: 0 0 16px 16px;
-      padding: 20px 36px;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px 4px 0;
+      border-top: 1px solid var(--line);
+      margin-top: 10px;
     }
-    .footer p {
-      font-size: 11px;
-      color: #6e7681;
-      line-height: 1.6;
+    .signature { display: flex; align-items: center; gap: 10px; }
+    .signature-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy-deep), var(--teal));
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
     }
-    .footer strong {
-      color: #8b949e;
-      font-weight: 600;
-    }
-    .footer-divider {
-      width: 40px;
-      height: 1px;
-      background: #21262d;
-      margin: 10px auto;
-    }
+    .signature-name { font-size: 13px; font-weight: 700; color: var(--navy-deep); }
+    .signature-role { font-size: 11px; color: var(--muted); }
+    .footer-note { font-size: 10.5px; color: var(--muted); line-height: 1.55; }
 
-    /* ── Separator between sections ── */
-    .section-sep {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #21262d 30%, #21262d 70%, transparent);
-      margin: 24px 0 0;
+    /* En pantallas más anchas (desktop), un poco más de aire, pero se mantiene una sola columna
+       porque el destino principal es WhatsApp / celular. */
+    @media (min-width: 640px) {
+      body { padding: 36px 16px; }
+      .wrapper { max-width: 680px; }
+      .masthead { padding: 34px 36px; border-radius: 20px; }
+      .masthead h1 { font-size: 32px; }
+      .card { padding: 22px 24px; }
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
 
-    <!-- Header -->
-    <div class="header">
-      <div class="header-meta-row">
-        <div class="badge">
-          <div class="badge-dot"></div>
-          Inteligencia de Mercado &middot; {{ report.target_audience }}
-        </div>
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="topbar-meta">{{ report.frequency }} &middot; {{ report.target_audience }} &middot; {{ report.edition_date }}</div>
+    </div>
+
+    <!-- Masthead -->
+    <div class="masthead">
+      <div class="masthead-top">
+        <span class="eyebrow"><span class="eyebrow-dot"></span>Inteligencia de Mercado &middot; {{ report.target_audience }}</span>
         <span class="edition-tag">{{ report.frequency }} &middot; {{ report.edition_date }}</span>
       </div>
-      <h1>{{ report.title }}</h1>
-      <p class="header-subtitle">Informacion estrategica del sector salud y laboratorio clinico</p>
+      <h1>Newsletter Tendencias</h1>
+      <h2>Sector Salud & Diagnóstico Clínico</h2>
     </div>
 
-    <!-- Stats bar -->
-    <div class="stats-bar">
-      <div class="stat">
-        <span class="stat-icon">📡</span>
-        <div>
-          <div class="stat-label">Fuentes monitoreadas</div>
-          <div class="stat-value">23 dominios verificados</div>
-        </div>
-      </div>
-      <div class="stat">
-        <span class="stat-icon">🔒</span>
-        <div>
-          <div class="stat-label">Guardrails activos</div>
-          <div class="stat-value">Lista blanca estricta</div>
-        </div>
-      </div>
-      <div class="stat">
-        <span class="stat-icon">🌐</span>
-        <div>
-          <div class="stat-label">Cobertura</div>
-          <div class="stat-value">Macro / Nacional / BC / Tijuana</div>
-        </div>
+    <!-- [1] Resumen Ejecutivo (al inicio) -->
+    <div class="block">
+      <div class="section-label"><div class="section-num num-sum">1</div><span class="text">Resumen ejecutivo</span></div>
+      <div class="summary-card">
+        {% if report.resumen_ejecutivo %}
+          {% for bullet in report.resumen_ejecutivo %}
+            {% if bullet.url %}
+            <a class="summary-row" href="{{ bullet.url }}" target="_blank" rel="noopener">
+              <div class="summary-check">&#10003;</div>
+              <div>{{ bullet.text|bold }}<span class="summary-source">{{ bullet.source_domain }}</span></div>
+            </a>
+            {% else %}
+            <div class="summary-row"><div class="summary-check">&#10003;</div><div>{{ bullet.text|bold }}</div></div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+        <p class="empty-note" style="color: rgba(230,238,248,0.6);">Sin novedades registradas esta semana en esta categoría.</p>
+        {% endif %}
       </div>
     </div>
 
-    <!-- Main content -->
-    <div class="content">
-
-      {% if report.nota_principal %}
-      <!-- Nota Principal -->
-      <div class="section-header">
-        <div class="section-icon icon-main">📌</div>
-        <span class="section-title-text">1. Nota Principal de Relevancia</span>
-        <div class="section-divider"></div>
-      </div>
-      <div class="card primary">
-        <div class="card-title">{{ report.nota_principal.title }}</div>
-        <div class="card-body">{{ report.nota_principal.content }}</div>
-        <div class="card-footer">
-          <div class="source-chip">
-            <div class="source-dot"></div>
-            {{ report.nota_principal.source_domain }}
-          </div>
-          <a href="{{ report.nota_principal.url }}" target="_blank" class="card-link">Ver nota &rarr;</a>
+    <!-- [2] Nota Principal -->
+    <div class="block">
+      <div class="section-label"><div class="section-num num-main">2</div><span class="text">Nota principal</span></div>
+      <div class="card accent-main">
+        {% if report.nota_principal %}
+        <div class="item-title">{{ report.nota_principal.title }}</div>
+        <div class="item-body">{{ report.nota_principal.content }}</div>
+        <div class="item-footer">
+          <span class="source-tag">{{ report.nota_principal.source_domain }}</span>
+          <a href="{{ report.nota_principal.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
         </div>
+        {% else %}
+        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
+        {% endif %}
       </div>
-      {% endif %}
-
-      {% if report.competencia %}
-      <div class="section-sep"></div>
-      <!-- Competencia -->
-      <div class="section-header">
-        <div class="section-icon icon-comp">🏢</div>
-        <span class="section-title-text">2. Movimientos de la Competencia</span>
-        <div class="section-divider"></div>
-      </div>
-      {% for item in report.competencia %}
-      <div class="card">
-        <div class="card-title">{{ item.title }}</div>
-        <div class="card-body">{{ item.content }}</div>
-        <div class="card-footer">
-          <div class="source-chip">
-            <div class="source-dot"></div>
-            {{ item.source_domain }}
-          </div>
-          <a href="{{ item.url }}" target="_blank" class="card-link">Ver nota &rarr;</a>
-        </div>
-      </div>
-      {% endfor %}
-      {% endif %}
-
-      {% if report.sector_publico %}
-      <div class="section-sep"></div>
-      <!-- Sector Público -->
-      <div class="section-header">
-        <div class="section-icon icon-pub">🏛️</div>
-        <span class="section-title-text">3. Sector Publico Salud & Regulacion</span>
-        <div class="section-divider"></div>
-      </div>
-      {% for item in report.sector_publico %}
-      <div class="card">
-        <div class="card-title">{{ item.title }}</div>
-        <div class="card-body">{{ item.content }}</div>
-        <div class="card-footer">
-          <div class="source-chip">
-            <div class="source-dot"></div>
-            {{ item.source_domain }}
-          </div>
-          <a href="{{ item.url }}" target="_blank" class="card-link">Ver nota &rarr;</a>
-        </div>
-      </div>
-      {% endfor %}
-      {% endif %}
-
-      {% if report.canales_informacion %}
-      <div class="section-sep"></div>
-      <!-- Canales de Información -->
-      <div class="section-header">
-        <div class="section-icon icon-chan">📢</div>
-        <span class="section-title-text">4. Canales de Informacion & Capacitacion</span>
-        <div class="section-divider"></div>
-      </div>
-      {% for item in report.canales_informacion %}
-      <div class="card">
-        <div class="card-title">{{ item.title }}</div>
-        <div class="card-body">{{ item.content }}</div>
-        <div class="card-footer">
-          <div class="source-chip">
-            <div class="source-dot"></div>
-            {{ item.source_domain }}
-          </div>
-          <a href="{{ item.url }}" target="_blank" class="card-link">Ver nota &rarr;</a>
-        </div>
-      </div>
-      {% endfor %}
-      {% endif %}
-
-      {% if report.sector_privado %}
-      <div class="section-sep"></div>
-      <!-- Sector Privado -->
-      <div class="section-header">
-        <div class="section-icon icon-priv">🩺</div>
-        <span class="section-title-text">5. Sector Privado Salud & Mercado</span>
-        <div class="section-divider"></div>
-      </div>
-      {% for item in report.sector_privado %}
-      <div class="card">
-        <div class="card-title">{{ item.title }}</div>
-        <div class="card-body">{{ item.content }}</div>
-        <div class="card-footer">
-          <div class="source-chip">
-            <div class="source-dot"></div>
-            {{ item.source_domain }}
-          </div>
-          <a href="{{ item.url }}" target="_blank" class="card-link">Ver nota &rarr;</a>
-        </div>
-      </div>
-      {% endfor %}
-      {% endif %}
-
-      {% if report.resumen_ejecutivo %}
-      <div class="section-sep"></div>
-      <!-- Resumen Ejecutivo -->
-      <div class="summary-box">
-        <div class="summary-title">6. Resumen Ejecutivo</div>
-        {% for bullet in report.resumen_ejecutivo %}
-        <div class="summary-item">
-          <div class="summary-bullet"><span>&#10003;</span></div>
-          <div>{{ bullet }}</div>
-        </div>
-        {% endfor %}
-      </div>
-      {% endif %}
-
     </div>
 
-    <!-- Footer -->
+    <!-- [3] Competencia -->
+    <div class="block">
+      <div class="section-label"><div class="section-num num-comp">3</div><span class="text">Competencia</span></div>
+      <div class="card accent-comp">
+        {% if report.competencia %}
+          {% for item in report.competencia %}
+          <div class="item">
+            <div class="item-title">{{ item.title }}</div>
+            <div class="item-body">{{ item.content }}</div>
+            <div class="item-footer">
+              <span class="source-tag">{{ item.source_domain }}</span>
+              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- [4] Sector Público -->
+    <div class="block">
+      <div class="section-label"><div class="section-num num-pub">4</div><span class="text">Sector público salud</span></div>
+      <div class="card accent-pub">
+        {% if report.sector_publico %}
+          {% for item in report.sector_publico %}
+          <div class="item">
+            <div class="item-title">{{ item.title }}</div>
+            <div class="item-body">{{ item.content }}</div>
+            <div class="item-footer">
+              <span class="source-tag">{{ item.source_domain }}</span>
+              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- [5] IA en Salud y Laboratorios -->
+    <div class="block">
+      <div class="section-label"><div class="section-num num-ia">5</div><span class="text">IA en salud y laboratorios</span></div>
+      <div class="card accent-ia">
+        {% if report.ia_salud_laboratorios %}
+          {% for item in report.ia_salud_laboratorios %}
+          <div class="item">
+            <div class="item-title">{{ item.title }}</div>
+            <div class="item-body">{{ item.content }}</div>
+            <div class="item-footer">
+              <span class="source-tag">{{ item.source_domain }}</span>
+              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- [6] Canales de Información -->
+    <div class="block">
+      <div class="section-label"><div class="section-num num-chan">6</div><span class="text">Canales de información</span></div>
+      <div class="card accent-chan">
+        {% if report.canales_informacion %}
+          {% for item in report.canales_informacion %}
+          <div class="item">
+            <div class="item-title">{{ item.title }}</div>
+            <div class="item-body">{{ item.content }}</div>
+            <div class="item-footer">
+              <span class="source-tag">{{ item.source_domain }}</span>
+              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- [7] Sector Privado -->
+    <div class="block">
+      <div class="section-label"><div class="section-num num-priv">7</div><span class="text">Sector privado salud</span></div>
+      <div class="card accent-priv">
+        {% if report.sector_privado %}
+          {% for item in report.sector_privado %}
+          <div class="item">
+            <div class="item-title">{{ item.title }}</div>
+            <div class="item-body">{{ item.content }}</div>
+            <div class="item-footer">
+              <span class="source-tag">{{ item.source_domain }}</span>
+              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Footer / Signature -->
     <div class="footer">
-      <p>Generado automaticamente por el <strong>Agente de Inteligencia de Mercado DPE</strong></p>
-      <div class="footer-divider"></div>
-      <p>Fuentes auditadas mediante lista blanca de 23 dominios verificados &middot; Uso interno y confidencial</p>
+      <div class="signature">
+        <div class="signature-avatar">{{ report.editor_name[:1] }}</div>
+        <div>
+          <div class="signature-name">{{ report.editor_name }}</div>
+          <div class="signature-role">{{ report.editor_role }}</div>
+        </div>
+      </div>
+      <p class="footer-note">Generado automáticamente por el Agente de Inteligencia de Mercado &middot; Uso interno y confidencial.</p>
     </div>
 
   </div>

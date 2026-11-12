@@ -1,5 +1,6 @@
 import os
 import json
+import datetime
 from typing import List, Dict, Any, Optional
 from src.collector.whitelist_validator import WhitelistValidator
 from src.models import NewsItem
@@ -30,15 +31,16 @@ class GeminiDataCollector:
             prompt = f"""
             Actúa como un agente de inteligencia de mercado del sector salud en México, Baja California y a nivel Internacional.
             Busca información pública reciente sobre: {query_hint}.
-            
+
             RESTRICCIÓN ESTRICTA: Solo incluye noticias provenientes de estos dominios autorizados:
             {list(self.validator.whitelisted_domains)}
-            
+
             Formatea la respuesta como una lista JSON de objetos con las claves:
             - title (máx 10 palabras)
             - content (resumen factual de 2 a 3 renglones sin opiniones)
             - url (URL completa a la nota)
             - source_domain (dominio de la fuente)
+            - published_date (fecha real de publicación, formato YYYY-MM-DD)
             """
             response = client.models.generate_content(
                 model="gemini-2.5-flash",
@@ -55,7 +57,8 @@ class GeminiDataCollector:
                         content=entry.get("content", ""),
                         url=url,
                         source_domain=entry.get("source_domain", "gob.mx"),
-                        category=category
+                        category=category,
+                        published_date=entry.get("published_date"),
                     ))
             return items
         except Exception as e:
@@ -64,6 +67,7 @@ class GeminiDataCollector:
 
     def _generate_mock_news(self, category: str) -> List[NewsItem]:
         """Genera noticias de prueba realistas basadas en las fuentes oficializadas (Macro, Nacional, Regional, Local)."""
+        today = datetime.date.today().isoformat()
         mock_db: Dict[str, List[Dict[str, str]]] = {
             "nota_principal": [
                 {
@@ -110,6 +114,14 @@ class GeminiDataCollector:
                     "url": "https://zetatijuana.com/noticias/salud-economia-inversion-clinicas-tijuana-2026",
                     "source_domain": "zetatijuana.com"
                 }
+            ],
+            "ia_salud_laboratorios": [
+                {
+                    "title": "ADLM publica lineamientos de gobernanza para IA en medicina de laboratorio",
+                    "content": "La asociación recomienda validación independiente y monitoreo post-despliegue para herramientas de inteligencia artificial usadas en laboratorios clínicos, como parte de su marco de gobernanza basado en riesgo.",
+                    "url": "https://myadlm.org/advocacy-and-outreach/adlm-policy-reports/2026/artificial-intelligence-in-laboratory-medicine",
+                    "source_domain": "myadlm.org"
+                }
             ]
         }
 
@@ -120,6 +132,7 @@ class GeminiDataCollector:
                 content=item["content"],
                 url=item["url"],
                 source_domain=item["source_domain"],
-                category=category
+                category=category,
+                published_date=today,
             ) for item in items_data
         ]

@@ -1,6 +1,15 @@
 import os
+import re
 from jinja2 import Environment, FileSystemLoader
+from markupsafe import Markup
 from src.models import NewsletterReport
+
+
+def _bold_filter(text: str) -> Markup:
+    """Convierte **texto** (markdown simple) en <strong>texto</strong>, escapando el resto."""
+    escaped = Markup.escape(text)
+    converted = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", str(escaped))
+    return Markup(converted)
 
 
 class NewsletterRenderer:
@@ -12,6 +21,7 @@ class NewsletterRenderer:
             loader=FileSystemLoader(self.template_dir),
             autoescape=True
         )
+        self.env.filters["bold"] = _bold_filter
 
     def render_html(self, report: NewsletterReport, template_name: str = "newsletter.html") -> str:
         """Renderiza el objeto NewsletterReport en una cadena HTML."""

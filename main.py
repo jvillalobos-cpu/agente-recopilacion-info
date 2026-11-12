@@ -1,7 +1,13 @@
 import os
+import sys
 import argparse
 from dotenv import load_dotenv
+from src.collector.config_validator import print_validation_report
 from src.collector.gemini_search import GeminiDataCollector
+from src.collector.youtube_collector import YouTubeCollector
+from src.collector.manual_curation import ManualCurationCollector
+from src.collector.clues_collector import CLUESCollector
+from src.collector.mananera_collector import MananeraSaludCollector
 from src.processor.claude_synthesizer import ClaudeNewsProcessor
 from src.newsletter.renderer import NewsletterRenderer
 from src.delivery.resend_mailer import ResendEmailDelivery
@@ -44,6 +50,12 @@ def main():
     print(" [AGENTE DE INTELIGENCIA DE MERCADO Y SECTOR SALUD]")
     print("==========================================================")
     print(f"Audiencia: {args.audience} | Frecuencia: {args.frequency}")
+
+    # 0. Validación de configuración: la lista blanca es la base de todos los guardrails.
+    if not print_validation_report():
+        print("[ERROR] config/sources.json tiene errores críticos. Abortando ejecución.")
+        sys.exit(1)
+
     print("Iniciando recoleccion de noticias y analisis de mercado...")
 
     # 1. Recolección de noticias asistida por Gemini
@@ -53,8 +65,27 @@ def main():
         "competencia": collector.fetch_market_news("competencia", "competencia laboratorios clinicos diagnostico mexico"),
         "sector_publico_salud": collector.fetch_market_news("sector_publico_salud", "sector publico salud cofepris imss licitaciones"),
         "canales_informacion": collector.fetch_market_news("canales_informacion", "divulgacion medica redes sociales youtube salud"),
-        "sector_privado_salud": collector.fetch_market_news("sector_privado_salud", "sector privado salud hospitales inversion laboratorio")
+        "sector_privado_salud": collector.fetch_market_news("sector_privado_salud", "sector privado salud hospitales inversion laboratorio"),
+        "ia_salud_laboratorios": collector.fetch_market_news("ia_salud_laboratorios", "inteligencia artificial diagnostico laboratorio clinico salud")
     }
+
+    # 1b. Recolección de videos recientes de canales oficiales de YouTube (API oficial, sin scraping)
+    youtube_collector = YouTubeCollector()
+    collected_data["canales_informacion"].extend(youtube_collector.fetch_recent_videos(days=7))
+
+    # 1c. Posts curados a mano (Instagram, X, LinkedIn) de personas/empresas sin blog propio
+    manual_collector = ManualCurationCollector()
+    manual_posts = manual_collector.fetch_curated_posts()
+    for category, items in manual_posts.items():
+        collected_data.setdefault(category, []).extend(items)
+
+    # 1d. Nuevos registros de laboratorios/clínicas privadas en BC vía catálogo oficial CLUES (DGIS)
+    clues_collector = CLUESCollector()
+    collected_data["competencia"].extend(clues_collector.fetch_new_competitor_registrations())
+
+    # 1e. Bloque de salud de la mañanera presidencial (habitualmente los martes)
+    mananera_collector = MananeraSaludCollector()
+    collected_data["sector_publico_salud"].extend(mananera_collector.fetch_latest_tuesday_health_block())
 
     print("[OK] Noticias recopiladas y filtradas mediante Lista Blanca (Guardrails).")
 

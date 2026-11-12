@@ -11,12 +11,13 @@ def test_newsletter_generation_flow():
         "competencia": collector.fetch_market_news("competencia", "laboratorio"),
         "sector_publico_salud": collector.fetch_market_news("sector_publico_salud", "imss"),
         "canales_informacion": collector.fetch_market_news("canales_informacion", "redes"),
-        "sector_privado_salud": collector.fetch_market_news("sector_privado_salud", "privado")
+        "sector_privado_salud": collector.fetch_market_news("sector_privado_salud", "privado"),
+        "ia_salud_laboratorios": collector.fetch_market_news("ia_salud_laboratorios", "ia diagnostico"),
     }
-    
+
     processor = ClaudeNewsProcessor()
-    report = processor.build_newsletter_report(data, target_audience="DPE", frequency="Semanal")
-    
+    report = processor.build_newsletter_report(data, target_audience="DPE", frequency="Mensual")
+
     assert report.title == "Newsletter de Inteligencia de Mercado y Salud"
     assert report.is_verified_by_guardrails == True
     assert report.nota_principal is not None
@@ -26,3 +27,4 @@ def test_newsletter_generation_flow():
     html_output = renderer.render_html(report)
     assert "Inteligencia de Mercado" in html_output
     assert report.nota_principal.title in html_output
+    assert "Resumen ejecutivo" in html_output

@@ -1,6 +1,7 @@
 import json
 from urllib.parse import urlparse
 from typing import List, Set
+from src.collector.security_log import log_rejection
 
 
 class WhitelistValidator:
@@ -20,7 +21,7 @@ class WhitelistValidator:
         except Exception as e:
             print(f"[WARN] Error cargando lista blanca de fuentes ({e}). Usando valores por defecto.")
             self.whitelisted_domains = {
-                "gob.mx", "cofepris.gob.mx", "imss.gob.mx", "who.int", "paho.org",
+                "gob.mx", "cofepris.gob.mx", "who.int", "paho.org",
                 "elfinanciero.com.mx", "eleconomista.com.mx", "expansion.mx"
             }
 
@@ -28,7 +29,7 @@ class WhitelistValidator:
         """Verifica si el dominio de la URL proporcionada está en la lista blanca."""
         if not url or not isinstance(url, str):
             return False
-        
+
         try:
             parsed = urlparse(url)
             domain = parsed.netloc.lower()
@@ -45,3 +46,19 @@ class WhitelistValidator:
     def filter_urls(self, urls: List[str]) -> List[str]:
         """Filtra una lista de URLs retornando únicamente las permitidas."""
         return [url for url in urls if self.is_url_allowed(url)]
+
+    def validate_and_log(self, url: str, title: str = "", category: str = "") -> bool:
+        """
+        Valida una URL contra la lista blanca; si es rechazada, registra el evento en el
+        log de seguridad (logs/security_rejections.jsonl) para dejar rastro auditable.
+        """
+        if self.is_url_allowed(url):
+            return True
+        log_rejection(
+            event_type="dominio_no_autorizado",
+            reason=f"El dominio de '{url}' no está en la lista blanca (config/sources.json).",
+            title=title,
+            url=url,
+            category=category,
+        )
+        return False

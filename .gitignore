@@ -15,4 +15,6 @@ env/
 # Archivos generados y logs
 output/
 *.log
+logs/
+data/
 .pytest_cache/
