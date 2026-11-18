@@ -660,6 +660,17 @@
       "source_domain": "elimparcial.com",
       "category": "sector_privado_salud",
       "published_date": "2026-11-05"
+    },
+    {
+      "entity_name": "Google DeepMind",
+      "entity_type": "fuente_curada",
+      "platform": "Blog oficial",
+      "title": "AlphaGenome 2: Google DeepMind predice efectos de variantes geneticas por tipo celular",
+      "content": "Google DeepMind presento el 11 de noviembre de 2026 AlphaGenome 2, su nuevo modelo de IA para predecir como las variantes geneticas afectan la actividad genica en tipos celulares especificos (no en promedios de tejido completo). Entrenado con mas de 107 millones de perfiles celulares individuales en 68 tejidos, el modelo identifica casi el doble de variantes que alteran la expresion genica frente a su predecesor; en el benchmark TenK10K (28 tipos de celulas inmunes) detecto 30% de variantes causales vs 16% del modelo anterior. Disponible gratis para investigacion no comercial via la API de AlphaGenome; uso comercial en vista previa privada. DeepMind aclara que el modelo es para investigacion y no ha sido validado ni aprobado para uso clinico o diagnostico.",
+      "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease/",
+      "source_domain": "deepmind.google",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-11"
     }
   ]
 }

@@ -73,6 +73,7 @@
     "epic.com",
     "ehealthreporter.com",
     "blog.google",
+    "deepmind.google",
     "nice.org.uk",
     "nytimes.com",
     "fiercehealthcare.com",
@@ -90,6 +91,7 @@
       { "name": "Abbott Newsroom", "domain": "abbott.mediaroom.com" },
       { "name": "Bloomberg", "domain": "bloomberg.com" },
       { "name": "Google (blog oficial)", "domain": "blog.google" },
+      { "name": "Google DeepMind (blog oficial)", "domain": "deepmind.google" },
       { "name": "NICE (National Institute for Health and Care Excellence, UK)", "domain": "nice.org.uk" },
       { "name": "The New York Times", "domain": "nytimes.com" },
       { "name": "Fierce Healthcare", "domain": "fiercehealthcare.com" }
