@@ -342,13 +342,24 @@
       .masthead h1 { font-size: 34px; }
       .masthead h2 { font-size: 14px; }
 
-      .grid-2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 22px;
-        align-items: start;
+      /* Flujo tipo "periódico": las secciones se acomodan solas en 2 columnas.
+         Una sección corta no deja hueco: lo siguiente continúa justo debajo,
+         y si una sección queda muy larga, sus propias notas se reparten entre
+         ambas columnas en vez de forzar un bloque rígido por columna. */
+      .flow-columns {
+        column-count: 2;
+        column-gap: 26px;
       }
-      .grid-2 .block { margin-bottom: 0; }
+      .flow-columns .block {
+        break-inside: avoid-column;
+        margin-bottom: 16px;
+      }
+      /* Si una sola sección es muy larga, se le permite partirse entre columnas
+         (sus notas individuales nunca se cortan a la mitad). */
+      .flow-columns .block.long-section { break-inside: auto; }
+      .flow-columns .section-label { break-after: avoid-column; break-inside: avoid-column; }
+      .flow-columns .item { break-inside: avoid-column; }
+      .flow-columns .card { display: inline-block; width: 100%; }
 
       .card { padding: 6px 24px; }
       .card.accent-main { padding: 28px 32px; }
@@ -414,13 +425,25 @@
       </div>
     </div>
 
-    <!-- Grid: [3] Competencia · [4] Sector Público -->
-    <div class="grid-2">
-      <div class="block">
-        <div class="section-label"><div class="section-icon icon-comp">&#128202;</div><span class="text">Competencia</span><span class="count">{{ report.competencia|length }}</span></div>
-        <div class="card" style="--accent-color: var(--red); --accent-tint: var(--red-tint); border-top: 3px solid var(--red);">
-          {% if report.competencia %}
-            {% for item in report.competencia %}
+    {% set flow_sections = [
+      ("competencia", report.competencia, "Competencia", "icon-comp", "&#128202;", "var(--red)", "var(--red-tint)"),
+      ("sector_publico", report.sector_publico, "Sector público salud", "icon-pub", "&#127963;", "var(--blue)", "var(--blue-tint)"),
+      ("ia_salud_laboratorios", report.ia_salud_laboratorios, "IA en salud y laboratorios", "icon-ia", "&#129504;", "var(--violet)", "var(--violet-tint)"),
+      ("canales_informacion", report.canales_informacion, "Canales de información", "icon-chan", "&#128225;", "var(--gold)", "var(--gold-tint)"),
+      ("sector_privado", report.sector_privado, "Sector privado salud", "icon-priv", "&#127970;", "#7d5fc4", "var(--violet-tint)"),
+    ] %}
+
+    <!-- [3-7] Competencia, Sector Público, IA, Canales y Sector Privado:
+         flujo continuo de 2 columnas en escritorio (una sola columna en celular).
+         Las secciones cortas se acomodan juntas; una sección larga reparte sus
+         propias notas entre ambas columnas en vez de dejar un hueco. -->
+    <div class="flow-columns">
+      {% for key, items, label, icon_class, icon_glyph, accent, tint in flow_sections %}
+      <div class="block{% if items|length >= 5 %} long-section{% endif %}">
+        <div class="section-label"><div class="section-icon {{ icon_class }}">{{ icon_glyph }}</div><span class="text">{{ label }}</span><span class="count">{{ items|length }}</span></div>
+        <div class="card" style="--accent-color: {{ accent }}; --accent-tint: {{ tint }}; border-top: 3px solid {{ accent }};">
+          {% if items %}
+            {% for item in items %}
             <div class="item">
               {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
               <div class="item-title">{{ item.title }}</div>
@@ -436,94 +459,7 @@
           {% endif %}
         </div>
       </div>
-
-      <div class="block">
-        <div class="section-label"><div class="section-icon icon-pub">&#127963;</div><span class="text">Sector público salud</span><span class="count">{{ report.sector_publico|length }}</span></div>
-        <div class="card" style="--accent-color: var(--blue); --accent-tint: var(--blue-tint); border-top: 3px solid var(--blue);">
-          {% if report.sector_publico %}
-            {% for item in report.sector_publico %}
-            <div class="item">
-              {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
-              <div class="item-title">{{ item.title }}</div>
-              <div class="item-body">{{ item.content }}</div>
-              <div class="item-footer">
-                <span class="source-tag">{{ item.source_domain }}</span>
-                <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
-              </div>
-            </div>
-            {% endfor %}
-          {% else %}
-          <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-
-    <!-- Grid: [5] IA en salud y laboratorios · [6] Canales de Información -->
-    <div class="grid-2" style="margin-top: 14px;">
-      <div class="block">
-        <div class="section-label"><div class="section-icon icon-ia">&#129504;</div><span class="text">IA en salud y laboratorios</span><span class="count">{{ report.ia_salud_laboratorios|length }}</span></div>
-        <div class="card" style="--accent-color: var(--violet); --accent-tint: var(--violet-tint); border-top: 3px solid var(--violet);">
-          {% if report.ia_salud_laboratorios %}
-            {% for item in report.ia_salud_laboratorios %}
-            <div class="item">
-              {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
-              <div class="item-title">{{ item.title }}</div>
-              <div class="item-body">{{ item.content }}</div>
-              <div class="item-footer">
-                <span class="source-tag">{{ item.source_domain }}</span>
-                <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
-              </div>
-            </div>
-            {% endfor %}
-          {% else %}
-          <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
-          {% endif %}
-        </div>
-      </div>
-
-      <div class="block">
-        <div class="section-label"><div class="section-icon icon-chan">&#128225;</div><span class="text">Canales de información</span><span class="count">{{ report.canales_informacion|length }}</span></div>
-        <div class="card" style="--accent-color: var(--gold); --accent-tint: var(--gold-tint); border-top: 3px solid var(--gold);">
-          {% if report.canales_informacion %}
-            {% for item in report.canales_informacion %}
-            <div class="item">
-              {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
-              <div class="item-title">{{ item.title }}</div>
-              <div class="item-body">{{ item.content }}</div>
-              <div class="item-footer">
-                <span class="source-tag">{{ item.source_domain }}</span>
-                <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
-              </div>
-            </div>
-            {% endfor %}
-          {% else %}
-          <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-
-    <!-- [7] Sector Privado (ancho completo) -->
-    <div class="block" style="margin-top: 14px;">
-      <div class="section-label"><div class="section-icon icon-priv">&#127970;</div><span class="text">Sector privado salud</span><span class="count">{{ report.sector_privado|length }}</span></div>
-      <div class="card" style="--accent-color: #7d5fc4; --accent-tint: var(--violet-tint); border-top: 3px solid #7d5fc4;">
-        {% if report.sector_privado %}
-          {% for item in report.sector_privado %}
-          <div class="item">
-            {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-body">{{ item.content }}</div>
-            <div class="item-footer">
-              <span class="source-tag">{{ item.source_domain }}</span>
-              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
-            </div>
-          </div>
-          {% endfor %}
-        {% else %}
-        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
-        {% endif %}
-      </div>
+      {% endfor %}
     </div>
 
     <!-- Footer / Signature -->
