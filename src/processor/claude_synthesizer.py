@@ -41,6 +41,25 @@ def format_date_es(date: datetime.date) -> str:
     return f"{date.day} de {MESES_ES[date.month - 1]}, {date.year}"
 
 
+def summarize_content(content: str, max_sentences: int = 1, max_chars: int = 180) -> str:
+    """
+    Reduce el contenido de una nota a su idea principal: toma solo las
+    primeras oraciones (hasta max_sentences) y recorta por longitud si aún
+    así resulta demasiado extenso, para que la tarjeta se lea como un
+    resumen y no como el cuerpo completo de la noticia.
+    """
+    text = content.strip()
+    sentences = [s.strip() for s in text.split(". ") if s.strip()]
+    summary = ". ".join(sentences[:max_sentences])
+    if not summary.endswith("."):
+        summary += "."
+    if len(summary) > max_chars:
+        cutoff = summary.rfind(" ", 0, max_chars)
+        cutoff = cutoff if cutoff > 0 else max_chars
+        summary = summary[:cutoff].rstrip(",;: ") + "…"
+    return summary
+
+
 def score_importance(item: NewsItem) -> int:
     """Calcula un puntaje simple de relevancia estratégica basado en palabras clave del insumo."""
     haystack = f"{item.title} {item.content}".lower()
@@ -142,12 +161,9 @@ class ClaudeNewsProcessor:
         if not item:
             return
 
-        # Limitar longitud si excede el rango máximo
-        lines = item.content.strip().split(". ")
-        if len(lines) > 3:
-            item.content = ". ".join(lines[:3]) + "."
-        elif len(lines) < 2 and not item.content.endswith("."):
-            item.content += "."
+        # Resumen de una sola idea principal: la tarjeta debe leerse como
+        # resumen ejecutivo, no como el cuerpo completo de la nota.
+        item.content = summarize_content(item.content, max_sentences=1, max_chars=180)
 
     def _generate_executive_bullets(
         self,

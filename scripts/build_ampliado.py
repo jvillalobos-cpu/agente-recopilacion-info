@@ -5,7 +5,7 @@ from src.collector.manual_curation import ManualCurationCollector
 from src.collector.gemini_search import GeminiDataCollector
 from src.models import NewsletterReport, ExecutiveBullet
 from src.newsletter.renderer import NewsletterRenderer
-from src.processor.claude_synthesizer import format_date_es, score_importance
+from src.processor.claude_synthesizer import format_date_es, score_importance, summarize_content
 from src.collector.recency_filter import filter_items_in_current_month
 
 manual = ManualCurationCollector().fetch_curated_posts()
@@ -14,6 +14,12 @@ gemini = GeminiDataCollector()  # sin API key -> mock, solo para nota_principal 
 # Solo notas del mes calendario en curso: lo que ya salio en la edicion del mes
 # pasado no debe repetirse, aunque siga dentro de una ventana movil de dias.
 manual = {cat: filter_items_in_current_month(items) for cat, items in manual.items()}
+
+# Resumen de una sola idea principal por nota: la tarjeta debe leerse como
+# resumen ejecutivo (idea clave + palabras clave), no como el cuerpo completo.
+for items in manual.values():
+    for item in items:
+        item.content = summarize_content(item.content, max_sentences=1, max_chars=180)
 
 # Nota principal: la de mayor score entre todas las categorias (o la unica marcada como tal)
 nota_principal = None
