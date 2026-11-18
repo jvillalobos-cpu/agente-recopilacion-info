@@ -13,8 +13,15 @@
       --navy: #0b2540;
       --navy-deep: #071a30;
       --teal: #0ea5a0;
+      --teal-tint: #effaf9;
       --gold: #e0a63a;
+      --gold-tint: #fdf7ec;
+      --red: #d9534f;
+      --red-tint: #fdf2f2;
+      --blue: #4b8bbe;
+      --blue-tint: #eff6fb;
       --violet: #7d5fc4;
+      --violet-tint: #f5f2fc;
       --ink: #1a2634;
       --muted: #64748b;
       --line: #e6eaf1;
@@ -32,7 +39,7 @@
       padding: 14px 10px;
     }
 
-    /* Mobile-first: una sola columna por defecto, pensado para abrirse en WhatsApp/navegador de celular */
+    /* Mobile-first: una sola columna por defecto (WhatsApp / celular) */
     .wrapper { max-width: 600px; margin: 0 auto; }
 
     /* ── Topbar ── */
@@ -124,52 +131,83 @@
     .section-label {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 9px;
       margin: 20px 2px 10px;
     }
     .summary-card + .section-label,
     .masthead + .section-label { margin-top: 0; }
-    .section-num {
-      width: 23px; height: 23px;
-      border-radius: 7px;
+    .section-icon {
+      width: 28px; height: 28px;
+      border-radius: 9px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 800;
-      color: #fff;
+      font-size: 14px;
       flex-shrink: 0;
     }
     .section-label span.text {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.6px;
-      color: var(--muted);
+      color: var(--navy-deep);
     }
-    .num-sum  { background: var(--navy); }
-    .num-main { background: var(--teal); }
-    .num-comp { background: #d9534f; }
-    .num-pub  { background: #4b8bbe; }
-    .num-ia   { background: var(--violet); }
-    .num-chan { background: var(--gold); }
-    .num-priv { background: #7d5fc4; }
+    .section-label span.count {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 1px 8px;
+      margin-left: auto;
+    }
+    .icon-sum  { background: var(--navy); }
+    .icon-main { background: var(--teal); }
+    .icon-comp { background: var(--red); }
+    .icon-pub  { background: var(--blue); }
+    .icon-ia   { background: var(--violet); }
+    .icon-chan { background: var(--gold); }
+    .icon-priv { background: #7d5fc4; }
 
     /* ── Cards ── */
     .card {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 16px;
-      padding: 18px 18px;
+      padding: 6px 18px;
       margin-bottom: 4px;
       box-shadow: 0 6px 18px -10px rgba(11, 37, 64, 0.12);
     }
-    .card.accent-main { border-top: 3px solid var(--teal); }
-    .card.accent-comp { border-top: 3px solid #d9534f; }
-    .card.accent-pub  { border-top: 3px solid #4b8bbe; }
-    .card.accent-ia   { border-top: 3px solid var(--violet); }
-    .card.accent-chan { border-top: 3px solid var(--gold); }
-    .card.accent-priv { border-top: 3px solid #7d5fc4; }
+    .card.accent-main { padding: 20px 20px; border-top: 3px solid var(--teal); }
 
-    .item { padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
-    .item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      padding-left: 14px;
+    }
+    .item::before {
+      content: '';
+      position: absolute;
+      left: -4px; top: 18px; bottom: 18px;
+      width: 3px;
+      border-radius: 3px;
+      background: var(--accent-color, var(--teal));
+      opacity: 0.55;
+    }
+    .item:last-child { border-bottom: none; }
+
+    .item-date {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: var(--accent-color, var(--teal));
+      background: var(--accent-tint, var(--teal-tint));
+      border-radius: 6px;
+      padding: 2px 8px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
 
     .item-title {
       font-family: 'Sora', sans-serif;
@@ -179,15 +217,15 @@
       line-height: 1.4;
       margin-bottom: 7px;
     }
-    .card.accent-main .item-title { font-size: 18px; }
+    .card.accent-main .item-title { font-size: 19px; }
 
     .item-body {
       font-size: 13.5px;
-      line-height: 1.6;
+      line-height: 1.68;
       color: #4b5a70;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
-    .card.accent-main .item-body { font-size: 14px; }
+    .card.accent-main .item-body { font-size: 14.5px; }
 
     .item-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
     .source-tag {
@@ -202,7 +240,7 @@
     .item-link {
       font-size: 12px;
       font-weight: 700;
-      color: var(--teal);
+      color: var(--accent-color, var(--teal));
       text-decoration: none;
       white-space: nowrap;
     }
@@ -212,9 +250,9 @@
       font-size: 13px;
       font-style: italic;
       color: var(--muted);
+      padding: 14px 0;
     }
 
-    /* Todas las secciones se apilan verticalmente (mobile-first / WhatsApp) */
     .block { margin-bottom: 18px; }
 
     /* ── Summary (al inicio del boletín) ── */
@@ -225,7 +263,7 @@
       margin-bottom: 4px;
       box-shadow: 0 10px 24px -12px rgba(11, 37, 64, 0.4);
     }
-    .summary-card .section-label span.text { color: rgba(230, 238, 248, 0.6); }
+    .summary-card .section-label span.text { color: rgba(230, 238, 248, 0.75); }
     .summary-row {
       display: flex;
       align-items: flex-start;
@@ -292,14 +330,32 @@
     .signature-role { font-size: 11px; color: var(--muted); }
     .footer-note { font-size: 10.5px; color: var(--muted); line-height: 1.55; }
 
-    /* En pantallas más anchas (desktop), un poco más de aire, pero se mantiene una sola columna
-       porque el destino principal es WhatsApp / celular. */
-    @media (min-width: 640px) {
-      body { padding: 36px 16px; }
-      .wrapper { max-width: 680px; }
-      .masthead { padding: 34px 36px; border-radius: 20px; }
-      .masthead h1 { font-size: 32px; }
-      .card { padding: 22px 24px; }
+    /* ════════════════════════════════════════════════════════════
+       Escritorio / tablet ancho: dos columnas para las secciones
+       secundarias; resumen y nota principal se mantienen a todo
+       lo ancho porque son lo más importante de leer primero.
+       ════════════════════════════════════════════════════════════ */
+    @media (min-width: 860px) {
+      body { padding: 40px 24px; }
+      .wrapper { max-width: 1040px; }
+      .masthead { padding: 38px 42px; border-radius: 22px; }
+      .masthead h1 { font-size: 34px; }
+      .masthead h2 { font-size: 14px; }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        align-items: start;
+      }
+      .grid-2 .block { margin-bottom: 0; height: 100%; }
+      .grid-2 .card { height: calc(100% - 38px); }
+
+      .card { padding: 6px 24px; }
+      .card.accent-main { padding: 28px 32px; }
+      .item-title { font-size: 15.5px; }
+      .card.accent-main .item-title { font-size: 22px; }
+      .card.accent-main .item-body { font-size: 15px; }
     }
   </style>
 </head>
@@ -321,9 +377,9 @@
       <h2>Sector Salud & Diagnóstico Clínico</h2>
     </div>
 
-    <!-- [1] Resumen Ejecutivo (al inicio) -->
+    <!-- [1] Resumen Ejecutivo (al inicio, ancho completo) -->
     <div class="block">
-      <div class="section-label"><div class="section-num num-sum">1</div><span class="text">Resumen ejecutivo</span></div>
+      <div class="section-label"><div class="section-icon icon-sum">&#9733;</div><span class="text">Resumen ejecutivo</span></div>
       <div class="summary-card">
         {% if report.resumen_ejecutivo %}
           {% for bullet in report.resumen_ejecutivo %}
@@ -342,16 +398,16 @@
       </div>
     </div>
 
-    <!-- [2] Nota Principal -->
+    <!-- [2] Nota Principal (ancho completo) -->
     <div class="block">
-      <div class="section-label"><div class="section-num num-main">2</div><span class="text">Nota principal</span></div>
+      <div class="section-label"><div class="section-icon icon-main">&#9889;</div><span class="text">Nota principal</span></div>
       <div class="card accent-main">
         {% if report.nota_principal %}
         <div class="item-title">{{ report.nota_principal.title }}</div>
         <div class="item-body">{{ report.nota_principal.content }}</div>
         <div class="item-footer">
           <span class="source-tag">{{ report.nota_principal.source_domain }}</span>
-          <a href="{{ report.nota_principal.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+          <a href="{{ report.nota_principal.url }}" target="_blank" class="item-link" style="color: var(--teal);">Ver nota &rarr;</a>
         </div>
         {% else %}
         <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
@@ -359,97 +415,104 @@
       </div>
     </div>
 
-    <!-- [3] Competencia -->
-    <div class="block">
-      <div class="section-label"><div class="section-num num-comp">3</div><span class="text">Competencia</span></div>
-      <div class="card accent-comp">
-        {% if report.competencia %}
-          {% for item in report.competencia %}
-          <div class="item">
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-body">{{ item.content }}</div>
-            <div class="item-footer">
-              <span class="source-tag">{{ item.source_domain }}</span>
-              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+    <!-- Grid: [3] Competencia · [4] Sector Público -->
+    <div class="grid-2">
+      <div class="block">
+        <div class="section-label"><div class="section-icon icon-comp">&#128202;</div><span class="text">Competencia</span><span class="count">{{ report.competencia|length }}</span></div>
+        <div class="card" style="--accent-color: var(--red); --accent-tint: var(--red-tint); border-top: 3px solid var(--red);">
+          {% if report.competencia %}
+            {% for item in report.competencia %}
+            <div class="item">
+              {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
+              <div class="item-title">{{ item.title }}</div>
+              <div class="item-body">{{ item.content }}</div>
+              <div class="item-footer">
+                <span class="source-tag">{{ item.source_domain }}</span>
+                <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+              </div>
             </div>
-          </div>
-          {% endfor %}
-        {% else %}
-        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
-        {% endif %}
+            {% endfor %}
+          {% else %}
+          <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="section-label"><div class="section-icon icon-pub">&#127963;</div><span class="text">Sector público salud</span><span class="count">{{ report.sector_publico|length }}</span></div>
+        <div class="card" style="--accent-color: var(--blue); --accent-tint: var(--blue-tint); border-top: 3px solid var(--blue);">
+          {% if report.sector_publico %}
+            {% for item in report.sector_publico %}
+            <div class="item">
+              {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
+              <div class="item-title">{{ item.title }}</div>
+              <div class="item-body">{{ item.content }}</div>
+              <div class="item-footer">
+                <span class="source-tag">{{ item.source_domain }}</span>
+                <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+              </div>
+            </div>
+            {% endfor %}
+          {% else %}
+          <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
+          {% endif %}
+        </div>
       </div>
     </div>
 
-    <!-- [4] Sector Público -->
-    <div class="block">
-      <div class="section-label"><div class="section-num num-pub">4</div><span class="text">Sector público salud</span></div>
-      <div class="card accent-pub">
-        {% if report.sector_publico %}
-          {% for item in report.sector_publico %}
-          <div class="item">
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-body">{{ item.content }}</div>
-            <div class="item-footer">
-              <span class="source-tag">{{ item.source_domain }}</span>
-              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+    <!-- Grid: [5] IA en salud y laboratorios · [6] Canales de Información -->
+    <div class="grid-2" style="margin-top: 18px;">
+      <div class="block">
+        <div class="section-label"><div class="section-icon icon-ia">&#129504;</div><span class="text">IA en salud y laboratorios</span><span class="count">{{ report.ia_salud_laboratorios|length }}</span></div>
+        <div class="card" style="--accent-color: var(--violet); --accent-tint: var(--violet-tint); border-top: 3px solid var(--violet);">
+          {% if report.ia_salud_laboratorios %}
+            {% for item in report.ia_salud_laboratorios %}
+            <div class="item">
+              {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
+              <div class="item-title">{{ item.title }}</div>
+              <div class="item-body">{{ item.content }}</div>
+              <div class="item-footer">
+                <span class="source-tag">{{ item.source_domain }}</span>
+                <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+              </div>
             </div>
-          </div>
-          {% endfor %}
-        {% else %}
-        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
-        {% endif %}
+            {% endfor %}
+          {% else %}
+          <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="section-label"><div class="section-icon icon-chan">&#128225;</div><span class="text">Canales de información</span><span class="count">{{ report.canales_informacion|length }}</span></div>
+        <div class="card" style="--accent-color: var(--gold); --accent-tint: var(--gold-tint); border-top: 3px solid var(--gold);">
+          {% if report.canales_informacion %}
+            {% for item in report.canales_informacion %}
+            <div class="item">
+              {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
+              <div class="item-title">{{ item.title }}</div>
+              <div class="item-body">{{ item.content }}</div>
+              <div class="item-footer">
+                <span class="source-tag">{{ item.source_domain }}</span>
+                <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+              </div>
+            </div>
+            {% endfor %}
+          {% else %}
+          <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
+          {% endif %}
+        </div>
       </div>
     </div>
 
-    <!-- [5] IA en Salud y Laboratorios -->
-    <div class="block">
-      <div class="section-label"><div class="section-num num-ia">5</div><span class="text">IA en salud y laboratorios</span></div>
-      <div class="card accent-ia">
-        {% if report.ia_salud_laboratorios %}
-          {% for item in report.ia_salud_laboratorios %}
-          <div class="item">
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-body">{{ item.content }}</div>
-            <div class="item-footer">
-              <span class="source-tag">{{ item.source_domain }}</span>
-              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
-            </div>
-          </div>
-          {% endfor %}
-        {% else %}
-        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
-        {% endif %}
-      </div>
-    </div>
-
-    <!-- [6] Canales de Información -->
-    <div class="block">
-      <div class="section-label"><div class="section-num num-chan">6</div><span class="text">Canales de información</span></div>
-      <div class="card accent-chan">
-        {% if report.canales_informacion %}
-          {% for item in report.canales_informacion %}
-          <div class="item">
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-body">{{ item.content }}</div>
-            <div class="item-footer">
-              <span class="source-tag">{{ item.source_domain }}</span>
-              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
-            </div>
-          </div>
-          {% endfor %}
-        {% else %}
-        <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
-        {% endif %}
-      </div>
-    </div>
-
-    <!-- [7] Sector Privado -->
-    <div class="block">
-      <div class="section-label"><div class="section-num num-priv">7</div><span class="text">Sector privado salud</span></div>
-      <div class="card accent-priv">
+    <!-- [7] Sector Privado (ancho completo) -->
+    <div class="block" style="margin-top: 18px;">
+      <div class="section-label"><div class="section-icon icon-priv">&#127970;</div><span class="text">Sector privado salud</span><span class="count">{{ report.sector_privado|length }}</span></div>
+      <div class="card" style="--accent-color: #7d5fc4; --accent-tint: var(--violet-tint); border-top: 3px solid #7d5fc4;">
         {% if report.sector_privado %}
           {% for item in report.sector_privado %}
           <div class="item">
+            {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
             <div class="item-title">{{ item.title }}</div>
             <div class="item-body">{{ item.content }}</div>
             <div class="item-footer">

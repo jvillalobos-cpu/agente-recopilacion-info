@@ -3,7 +3,7 @@ import datetime
 import yaml
 from typing import Dict, List, Optional
 from src.models import NewsletterReport, NewsItem, ExecutiveBullet
-from src.collector.recency_filter import filter_recent_items
+from src.collector.recency_filter import filter_recent_items, filter_items_in_current_month
 from src.collector.deduplicator import deduplicate_items
 
 DEFAULT_MAX_NOTE_AGE_DAYS = {"Semanal": 10, "Mensual": 35}
@@ -76,11 +76,19 @@ class ClaudeNewsProcessor:
 
         # Guardrail de recencia: descarta notas fuera de la ventana permitida para la frecuencia,
         # o sin fecha de publicación verificable, antes de rankear o incluir nada en el boletín.
-        max_age_days = load_max_note_age_days().get(frequency, DEFAULT_MAX_NOTE_AGE_DAYS.get(frequency, 10))
-        collected_data = {
-            key: filter_recent_items(items, max_age_days)
-            for key, items in collected_data.items()
-        }
+        # Para el corte Mensual se usa el mes calendario actual (no una ventana móvil de días),
+        # para que una nota que ya salió en la edición del mes pasado no vuelva a aparecer.
+        if frequency == "Mensual":
+            collected_data = {
+                key: filter_items_in_current_month(items)
+                for key, items in collected_data.items()
+            }
+        else:
+            max_age_days = load_max_note_age_days().get(frequency, DEFAULT_MAX_NOTE_AGE_DAYS.get(frequency, 10))
+            collected_data = {
+                key: filter_recent_items(items, max_age_days)
+                for key, items in collected_data.items()
+            }
 
         # Deduplicación: evita que la misma nota (por URL o título casi idéntico)
         # aparezca dos veces cuando dos fuentes distintas cubren el mismo hecho.
