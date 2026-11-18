@@ -190,6 +190,25 @@
       box-shadow: 0 4px 14px -8px rgba(11, 37, 64, 0.12);
     }
 
+    /* Fila de etiquetas: cada nota lleva su propia categoría + icono, porque
+       el encabezado de sección no siempre queda pegado a su primera nota al
+       fluir entre columnas (limitación real de los navegadores con
+       column-count, no se puede forzar por CSS de forma confiable). Así cada
+       tarjeta se identifica sola, sin depender de su posición. */
+    .item-tags { display: flex; align-items: center; gap: 6px; margin-bottom: 7px; flex-wrap: wrap; }
+    .item-category {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--accent-color, var(--teal));
+      border-radius: 6px;
+      padding: 2px 8px;
+    }
     .item-date {
       display: inline-block;
       font-size: 10px;
@@ -199,8 +218,6 @@
       background: var(--accent-tint, var(--teal-tint));
       border-radius: 6px;
       padding: 2px 8px;
-      margin-bottom: 6px;
-      text-transform: uppercase;
     }
 
     .item-title {
@@ -442,7 +459,10 @@
         {% for item in items %}
         <div class="item-wrap">
           <div class="item" style="--accent-color: {{ accent }}; --accent-tint: {{ tint }};">
-            {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
+            <div class="item-tags">
+              <span class="item-category">{{ icon_glyph }} {{ label }}</span>
+              {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
+            </div>
             <div class="item-title">{{ item.title }}</div>
             <div class="item-body">{{ item.content }}</div>
             <div class="item-footer">
