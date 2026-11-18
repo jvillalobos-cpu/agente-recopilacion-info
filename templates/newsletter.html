@@ -357,16 +357,19 @@
       .masthead h2 { font-size: 14px; }
 
       /* Orden numérico estricto, en pares: cada encabezado de sección y cada
-         nota es una celda de un grid de 2 columnas que se acomoda en
-         secuencia estricta (como texto que envuelve línea por línea) --
-         si una sección deja una nota "non pareada", la siguiente sección
-         empieza justo al lado en la misma fila, sin dejar hueco. */
+         nota es una celda de un grid de 2 columnas. El encabezado de cada
+         categoría SIEMPRE ocupa el ancho completo (nunca se empareja con
+         una nota de otra categoría); sus notas se acomodan en 2 columnas
+         justo debajo. Si una categoría deja una nota impar, esa celda
+         queda sola y el siguiente encabezado arranca limpio en fila nueva. */
       .masonry-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 14px 22px;
         align-items: start;
       }
+      .masonry-grid .section-header { grid-column: 1 / -1; margin-top: 6px; }
+      .masonry-grid .section-header:first-child { margin-top: 0; }
       .card { padding: 18px 24px; }
       .card.accent-main { padding: 28px 32px; }
       .item-title { font-size: 15.5px; }
