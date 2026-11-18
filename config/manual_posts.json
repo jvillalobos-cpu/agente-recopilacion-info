@@ -638,6 +638,28 @@
       "source_domain": "lnkd.in",
       "category": "competencia",
       "published_date": "2026-11-17"
+    },
+    {
+      "entity_name": "Cumbre H de la Salud",
+      "entity_type": "evento_sector_salud",
+      "platform": "Cobertura de prensa",
+      "title": "Cumbre H de la Salud reúne a más de 900 personas en Hermosillo para analizar IA, salud mental y retos del sector",
+      "content": "La primera edicion de la Cumbre H de la Salud se realizo el 10 de noviembre de 2026 en Hermosillo, Sonora, reuniendo a mas de 900 personas para conocer investigaciones y analizar los retos del sector salud en Sonora y Mexico. Jorge Azpiri Lopez abordo si la IA puede mejorar los sistemas de salud; Alejandro Molina Lopez hablo sobre salud mental global y Rebeca Robles Garcia cerro con una exposicion sobre salud mental publica en Mexico. Entrada gratuita con registro previo.",
+      "url": "https://www.elimparcial.com/son/hermosillo/2026/11/10/cumbre-h-de-la-salud-reune-a-mas-de-900-personas-en-hermosillo-para-conocer-investigaciones-y-analizar-los-retos-del-sector-en-sonora-y-mexico/",
+      "source_domain": "elimparcial.com",
+      "category": "sector_privado_salud",
+      "published_date": "2026-11-10"
+    },
+    {
+      "entity_name": "SEDETI Tijuana",
+      "entity_type": "institucion",
+      "platform": "Cobertura de prensa",
+      "title": "Padrón de pases médicos (Fast Lane) en Tijuana baja de 1,500 a 850 establecimientos",
+      "content": "El secretario de Desarrollo Economico de Tijuana, Pedro Montejo Peterson, informo el 5 de noviembre que el padron de establecimientos con pases medicos (carril rapido fronterizo para cruce de personal y pacientes de salud) bajo de alrededor de 1,500 a cerca de 850, mientras los estudiantes transfronterizos aumentaron de 130 a mas de 450 (ya no se reciben nuevas solicitudes de ese sector). Los espacios en horarios matutinos llegaron a capacidad maxima. El Ayuntamiento revisa cambios a la Ley de Ingresos para bajar el costo de los pases, sin fecha definida. Relevante para la dinamica de cruce fronterizo de pacientes y personal de salud en Tijuana.",
+      "url": "https://www.elimparcial.com/tij/tijuana/2026/11/05/pases-medicos-en-tijuana-reducen-padron-de-establecimientos/",
+      "source_domain": "elimparcial.com",
+      "category": "sector_privado_salud",
+      "published_date": "2026-11-05"
     }
   ]
 }
