@@ -173,28 +173,22 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 16px;
-      padding: 6px 18px;
+      padding: 18px 18px;
       margin-bottom: 4px;
       box-shadow: 0 6px 18px -10px rgba(11, 37, 64, 0.12);
     }
     .card.accent-main { padding: 20px 20px; border-top: 3px solid var(--teal); }
 
+    /* Cada nota es su propia tarjeta independiente -- así nunca se parte a
+       la mitad cuando el flujo de columnas pasa de una a otra. */
     .item {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-      padding-left: 14px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent-color, var(--teal));
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 4px 14px -8px rgba(11, 37, 64, 0.12);
     }
-    .item::before {
-      content: '';
-      position: absolute;
-      left: -4px; top: 13px; bottom: 13px;
-      width: 3px;
-      border-radius: 3px;
-      background: var(--accent-color, var(--teal));
-      opacity: 0.55;
-    }
-    .item:last-child { border-bottom: none; }
 
     .item-date {
       display: inline-block;
@@ -342,26 +336,27 @@
       .masthead h1 { font-size: 34px; }
       .masthead h2 { font-size: 14px; }
 
-      /* Flujo tipo "periódico": las secciones se acomodan solas en 2 columnas.
-         Una sección corta no deja hueco: lo siguiente continúa justo debajo,
-         y si una sección queda muy larga, sus propias notas se reparten entre
-         ambas columnas en vez de forzar un bloque rígido por columna. */
+      /* Flujo tipo "periódico": cada nota es su propia tarjeta y fluye sola por
+         las 2 columnas (como un masonry). Una categoría corta no deja hueco:
+         la siguiente nota -de la misma categoría o de la próxima- continúa
+         justo debajo. Ninguna tarjeta se parte nunca a la mitad. */
       .flow-columns {
         column-count: 2;
         column-gap: 26px;
       }
-      .flow-columns .block {
+      .flow-columns .section-header {
+        break-after: avoid-column;
         break-inside: avoid-column;
-        margin-bottom: 16px;
+        margin: 0 0 8px;
       }
-      /* Si una sola sección es muy larga, se le permite partirse entre columnas
-         (sus notas individuales nunca se cortan a la mitad). */
-      .flow-columns .block.long-section { break-inside: auto; }
-      .flow-columns .section-label { break-after: avoid-column; break-inside: avoid-column; }
-      .flow-columns .item { break-inside: avoid-column; }
-      .flow-columns .card { display: inline-block; width: 100%; }
+      .flow-columns .section-header:not(:first-child) { margin-top: 4px; }
+      .flow-columns .item-wrap {
+        break-inside: avoid-column;
+        margin-bottom: 12px;
+      }
+      .flow-columns .empty-note-wrap { break-inside: avoid-column; margin-bottom: 12px; }
 
-      .card { padding: 6px 24px; }
+      .card { padding: 18px 24px; }
       .card.accent-main { padding: 28px 32px; }
       .item-title { font-size: 15.5px; }
       .card.accent-main .item-title { font-size: 22px; }
@@ -389,7 +384,7 @@
 
     <!-- [1] Resumen Ejecutivo (al inicio, ancho completo) -->
     <div class="block">
-      <div class="section-label"><div class="section-icon icon-sum">&#9733;</div><span class="text">Resumen ejecutivo</span></div>
+      <div class="section-label"><div class="section-icon icon-sum">★</div><span class="text">Resumen ejecutivo</span></div>
       <div class="summary-card">
         {% if report.resumen_ejecutivo %}
           {% for bullet in report.resumen_ejecutivo %}
@@ -410,7 +405,7 @@
 
     <!-- [2] Nota Principal (ancho completo) -->
     <div class="block">
-      <div class="section-label"><div class="section-icon icon-main">&#9889;</div><span class="text">Nota principal</span></div>
+      <div class="section-label"><div class="section-icon icon-main">⚡</div><span class="text">Nota principal</span></div>
       <div class="card accent-main">
         {% if report.nota_principal %}
         <div class="item-title">{{ report.nota_principal.title }}</div>
@@ -426,39 +421,40 @@
     </div>
 
     {% set flow_sections = [
-      ("competencia", report.competencia, "Competencia", "icon-comp", "&#128202;", "var(--red)", "var(--red-tint)"),
-      ("sector_publico", report.sector_publico, "Sector público salud", "icon-pub", "&#127963;", "var(--blue)", "var(--blue-tint)"),
-      ("ia_salud_laboratorios", report.ia_salud_laboratorios, "IA en salud y laboratorios", "icon-ia", "&#129504;", "var(--violet)", "var(--violet-tint)"),
-      ("canales_informacion", report.canales_informacion, "Canales de información", "icon-chan", "&#128225;", "var(--gold)", "var(--gold-tint)"),
-      ("sector_privado", report.sector_privado, "Sector privado salud", "icon-priv", "&#127970;", "#7d5fc4", "var(--violet-tint)"),
+      ("competencia", report.competencia, "Competencia", "icon-comp", "📊", "var(--red)", "var(--red-tint)"),
+      ("sector_publico", report.sector_publico, "Sector público salud", "icon-pub", "🏛️", "var(--blue)", "var(--blue-tint)"),
+      ("ia_salud_laboratorios", report.ia_salud_laboratorios, "IA en salud y laboratorios", "icon-ia", "🧠", "var(--violet)", "var(--violet-tint)"),
+      ("canales_informacion", report.canales_informacion, "Canales de información", "icon-chan", "📡", "var(--gold)", "var(--gold-tint)"),
+      ("sector_privado", report.sector_privado, "Sector privado salud", "icon-priv", "🏢", "#7d5fc4", "var(--violet-tint)"),
     ] %}
 
     <!-- [3-7] Competencia, Sector Público, IA, Canales y Sector Privado:
-         flujo continuo de 2 columnas en escritorio (una sola columna en celular).
-         Las secciones cortas se acomodan juntas; una sección larga reparte sus
-         propias notas entre ambas columnas en vez de dejar un hueco. -->
+         cada nota es su propia tarjeta y fluye sola por 2 columnas tipo
+         "periódico" (una sola columna en celular). Las categorías cortas se
+         acomodan junto a otras sin dejar hueco, y una categoría larga reparte
+         sus propias notas entre ambas columnas -- ninguna tarjeta se corta. -->
     <div class="flow-columns">
       {% for key, items, label, icon_class, icon_glyph, accent, tint in flow_sections %}
-      <div class="block{% if items|length >= 5 %} long-section{% endif %}">
+      <div class="section-header">
         <div class="section-label"><div class="section-icon {{ icon_class }}">{{ icon_glyph }}</div><span class="text">{{ label }}</span><span class="count">{{ items|length }}</span></div>
-        <div class="card" style="--accent-color: {{ accent }}; --accent-tint: {{ tint }}; border-top: 3px solid {{ accent }};">
-          {% if items %}
-            {% for item in items %}
-            <div class="item">
-              {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
-              <div class="item-title">{{ item.title }}</div>
-              <div class="item-body">{{ item.content }}</div>
-              <div class="item-footer">
-                <span class="source-tag">{{ item.source_domain }}</span>
-                <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
-              </div>
-            </div>
-            {% endfor %}
-          {% else %}
-          <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
-          {% endif %}
-        </div>
       </div>
+      {% if items %}
+        {% for item in items %}
+        <div class="item-wrap">
+          <div class="item" style="--accent-color: {{ accent }}; --accent-tint: {{ tint }};">
+            {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
+            <div class="item-title">{{ item.title }}</div>
+            <div class="item-body">{{ item.content }}</div>
+            <div class="item-footer">
+              <span class="source-tag">{{ item.source_domain }}</span>
+              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+      <div class="empty-note-wrap"><p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p></div>
+      {% endif %}
       {% endfor %}
     </div>
 
