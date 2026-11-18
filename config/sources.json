@@ -75,7 +75,9 @@
     "blog.google",
     "nice.org.uk",
     "nytimes.com",
-    "fiercehealthcare.com"
+    "fiercehealthcare.com",
+    "deliabarraza.com",
+    "vivalanoticia.mx"
   ],
   "sources_by_tier": {
     "macro_internacional": [
@@ -141,7 +143,11 @@
       { "name": "Salud Digna (sitio oficial)", "domain": "salud-digna.org" },
       { "name": "Laboratorio Médico del Chopo (sitio oficial)", "domain": "chopo.com.mx" },
       { "name": "Medikit (sitio oficial)", "domain": "medikit.com.mx" },
-      { "name": "Zalutt Health Lab (sitio oficial)", "domain": "zalutt.com" }
+      { "name": "Zalutt Health Lab (sitio oficial)", "domain": "zalutt.com" },
+      { "name": "Laboratorios Delia Barraza (sitio oficial)", "domain": "deliabarraza.com" }
+    ],
+    "cobertura_regional_sinaloa": [
+      { "name": "Viva la Noticia (Sinaloa)", "domain": "vivalanoticia.mx" }
     ],
     "asociaciones_sitio_oficial": [
       { "name": "Asociación HealthTech México (sitio oficial)", "domain": "asociacionhealthtech.mx" }
@@ -180,7 +186,7 @@
     { "name": "Baja Health Cluster", "channel_id": "UCN-zFb3HaG3yngBxk7enRVw" }
   ],
   "competidores_monitoreados": [
-    "Salud Digna", "Chopo", "Quest", "Klein", "LabExpress", "Gamboa", "Castro", "Inca", "GlobalBC", "Medikit", "Zalutt"
+    "Salud Digna", "Chopo", "Quest", "Klein", "LabExpress", "Gamboa", "Castro", "Inca", "GlobalBC", "Medikit", "Zalutt", "Delia Barraza"
   ],
   "fuentes_permanentes_siempre_monitorear": [
     "Abbott Laboratories", "QuidelOrtho", "Quest Diagnostics", "Epic Systems Corporation", "eHealth Reporter"

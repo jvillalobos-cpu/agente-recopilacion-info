@@ -583,6 +583,39 @@
       "source_domain": "fiercehealthcare.com",
       "category": "ia_salud_laboratorios",
       "published_date": "2026-11-12"
+    },
+    {
+      "entity_name": "Laboratorios Delia Barraza",
+      "entity_type": "competidor",
+      "platform": "Verificación directa (Google Business)",
+      "title": "Abre nueva sucursal de Laboratorios Delia Barraza en Otay, Tijuana",
+      "content": "Laboratorios Delia Barraza (cadena con mas de 40 sucursales entre Sinaloa y Tijuana, operando desde 1994, verificada por COEPRIS) abrio una nueva sucursal en Blvd. de las Bellas Artes 19205, Nueva Tijuana, zona Otay -- ubicacion adicional a sus sucursales ya conocidas en Tijuana (Diaz Ordaz, Girasoles, Zona Rio). Nota: hallazgo por verificacion directa del equipo DPE via ficha de Google Business, no por cobertura de prensa; se recomienda dar seguimiento al sitio oficial (deliabarraza.com/sucursales) para confirmar fecha formal de apertura.",
+      "url": "https://deliabarraza.com/sucursales",
+      "source_domain": "deliabarraza.com",
+      "category": "competencia",
+      "published_date": "2026-11-18"
+    },
+    {
+      "entity_name": "Jesús Vizcarra Calderón / Salud Digna",
+      "entity_type": "competidor",
+      "platform": "Cobertura de prensa",
+      "title": "Academia Nacional de Medicina reconoce a Jesús Vizcarra Calderón por su labor con Salud Digna",
+      "content": "La Academia Nacional de Medicina de Mexico otorgo un homenaje a Jesus Vizcarra Calderon (fundador de Salud Digna y presidente de SuKarne) por sus contribuciones a la salud, en ceremonia realizada en el Centro Medico Nacional Siglo XXI (CDMX). Asistieron el presidente de la Academia, Raul Carrillo Esper, y el subsecretario de Salud, Eduardo Clark; lo acompaño el rector de la UAS, Jesus Maduena Molina. Cobertura describe a Salud Digna como red de diagnostico sin fines de lucro fundada en 2003, con presencia en varios paises. Relevante como senal de posicionamiento publico/politico del fundador del principal competidor directo de Certus.",
+      "url": "https://vivalanoticia.mx/otorga-la-academia-nacional-de-medicina-reconocimiento-a-jesus-vizcarra-calderon-por-la-labor-de-salud-digna/",
+      "source_domain": "vivalanoticia.mx",
+      "category": "competencia",
+      "published_date": "2026-11-18"
+    },
+    {
+      "entity_name": "Salud Digna",
+      "entity_type": "competidor",
+      "platform": "Cobertura de prensa",
+      "title": "Salud Digna anuncia 14 nuevas clínicas entre octubre y diciembre, expandiendo su red de 267 a 281 unidades",
+      "content": "Salud Digna (dirigida por Juan Carlos Ordonez) anuncio la apertura de 14 nuevas clinicas entre el 29 de octubre y el 15 de diciembre de 2026, expandiendo su red de 267 a 281 unidades en Mexico y Centroamerica. Movimiento de expansion directa del principal competidor de Certus en la region.",
+      "url": "https://www.milenio.com/temas/salud-digna",
+      "source_domain": "milenio.com",
+      "category": "competencia",
+      "published_date": "2026-11-17"
     }
   ]
 }
