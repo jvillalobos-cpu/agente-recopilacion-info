@@ -265,9 +265,11 @@
     }
 
     .block { margin-bottom: 14px; }
-    .masonry-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    .section-header { margin: 0; }
-    .item-wrap, .empty-note-wrap { margin: 0; }
+    .masonry-grid { display: block; }
+    .section-header { margin: 0 0 8px; }
+    .cols-2 { display: flex; flex-direction: column; gap: 12px; }
+    .cols-2 .col { display: flex; flex-direction: column; gap: 12px; }
+    .cols-2 + .section-header { margin-top: 16px; }
 
     /* ── Summary (al inicio del boletín) ── */
     .summary-card {
@@ -362,14 +364,13 @@
          una nota de otra categoría); sus notas se acomodan en 2 columnas
          justo debajo. Si una categoría deja una nota impar, esa celda
          queda sola y el siguiente encabezado arranca limpio en fila nueva. */
-      .masonry-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px 22px;
-        align-items: start;
-      }
-      .masonry-grid .section-header { grid-column: 1 / -1; margin-top: 6px; }
-      .masonry-grid .section-header:first-child { margin-top: 0; }
+      .section-header { margin-top: 6px; }
+      .section-header:first-child { margin-top: 0; }
+      /* Dos columnas independientes (flex, no grid-row): cada columna fluye
+         con su propia altura natural, así una nota corta no deja hueco en
+         blanco esperando a que la nota alta de su fila termine. */
+      .cols-2 { flex-direction: row; align-items: flex-start; gap: 0 22px; }
+      .cols-2 .col { flex: 1 1 0; gap: 14px; min-width: 0; }
       .card { padding: 18px 24px; }
       .card.accent-main { padding: 28px 32px; }
       .item-title { font-size: 15.5px; }
@@ -453,24 +454,42 @@
         <div class="section-label"><div class="section-icon {{ icon_class }}">{{ icon_glyph }}</div><span class="text">{{ label }}</span><span class="count">{{ items|length }}</span></div>
       </div>
       {% if items %}
-        {% for item in items %}
-        <div class="item-wrap">
-          <div class="item" style="--accent-color: {{ accent }}; --accent-tint: {{ tint }};">
-            <div class="item-tags">
-              <span class="item-category">{{ icon_glyph }} {{ label }}</span>
-              {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
+        <div class="cols-2">
+          <div class="col">
+          {% for item in items %}{% if loop.index0 % 2 == 0 %}
+            <div class="item" style="--accent-color: {{ accent }}; --accent-tint: {{ tint }};">
+              <div class="item-tags">
+                <span class="item-category">{{ icon_glyph }} {{ label }}</span>
+                {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
+              </div>
+              <div class="item-title">{{ item.title }}</div>
+              <div class="item-body">{{ item.content }}</div>
+              <div class="item-footer">
+                <span class="source-tag">{{ item.source_domain }}</span>
+                <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+              </div>
             </div>
-            <div class="item-title">{{ item.title }}</div>
-            <div class="item-body">{{ item.content }}</div>
-            <div class="item-footer">
-              <span class="source-tag">{{ item.source_domain }}</span>
-              <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+          {% endif %}{% endfor %}
+          </div>
+          <div class="col">
+          {% for item in items %}{% if loop.index0 % 2 == 1 %}
+            <div class="item" style="--accent-color: {{ accent }}; --accent-tint: {{ tint }};">
+              <div class="item-tags">
+                <span class="item-category">{{ icon_glyph }} {{ label }}</span>
+                {% if item.published_date %}<span class="item-date">{{ item.published_date }}</span>{% endif %}
+              </div>
+              <div class="item-title">{{ item.title }}</div>
+              <div class="item-body">{{ item.content }}</div>
+              <div class="item-footer">
+                <span class="source-tag">{{ item.source_domain }}</span>
+                <a href="{{ item.url }}" target="_blank" class="item-link">Ver nota &rarr;</a>
+              </div>
             </div>
+          {% endif %}{% endfor %}
           </div>
         </div>
-        {% endfor %}
       {% else %}
-      <div class="empty-note-wrap"><p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p></div>
+      <p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p>
       {% endif %}
       {% endfor %}
     </div>
