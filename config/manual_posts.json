@@ -616,6 +616,28 @@
       "source_domain": "milenio.com",
       "category": "competencia",
       "published_date": "2026-11-17"
+    },
+    {
+      "entity_name": "Farmacias del Ahorro / Farmacias Benavides",
+      "entity_type": "competidor",
+      "platform": "Cobertura de prensa",
+      "title": "Farmacias del Ahorro adquiere 96.56% de Farmacias Benavides; la combinada supera 3,100 sucursales",
+      "content": "Farmacias del Ahorro anuncio el 13 de noviembre de 2026 la adquisicion de 96.56% de las acciones de Farmacias Benavides, hasta ahora propiedad de subsidiarias de The Boots Group. Combinadas, las dos cadenas pasarian a tener mas de 3,100 sucursales a nivel nacional; aun no se define si operaran de forma independiente o si conservaran nombres separados. Movimiento relevante de consolidacion en el sector farmaceutico/retail de salud en Mexico, canal cada vez mas relevante para servicios de salud y diagnostico complementarios (clinicas y laboratorios asociados a farmacias).",
+      "url": "https://expansion.mx/empresas/2026/11/15/farmacias-benavides-dr-simi-farmacias-del-ahorro-tiendas",
+      "source_domain": "expansion.mx",
+      "category": "competencia",
+      "published_date": "2026-11-15"
+    },
+    {
+      "entity_name": "mediu",
+      "entity_type": "fuente_curada",
+      "platform": "LinkedIn",
+      "title": "Comparativo financiero de las 5 grandes cadenas de farmacias en México (1er semestre 2026)",
+      "content": "Infografia de mediu con comparativo financiero estimado de Farmacias Guadalajara, del Ahorro, Benavides, San Pablo y YZA para el primer semestre de 2026: numero de tiendas (Guadalajara 3,045; del Ahorro 1,890; Benavides 1,134; San Pablo 182; YZA 1,325), ingresos semestrales estimados (Guadalajara $68,820 MDP; del Ahorro $31,200 MDP; Benavides $11,600 MDP; San Pablo $12,100 MDP; YZA $16,800 MDP), ticket promedio, ROIC estimado anualizado y margen EBITDA (San Pablo destaca con 15% de margen EBITDA y ROIC de 25-27%, el mas alto del grupo pese a ser la cadena mas pequena). Nota: cifras son estimaciones/analisis de la fuente (mediu), no datos auditados publicados por las propias cadenas; se incluyen como referencia de inteligencia competitiva, no como hecho verificado de forma independiente.",
+      "url": "https://lnkd.in/p/gHtsvm_9",
+      "source_domain": "lnkd.in",
+      "category": "competencia",
+      "published_date": "2026-11-17"
     }
   ]
 }
