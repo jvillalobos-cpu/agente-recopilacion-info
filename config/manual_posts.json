@@ -506,6 +506,17 @@
       "source_domain": "lnkd.in",
       "category": "ia_salud_laboratorios",
       "published_date": "2026-11-17"
+    },
+    {
+      "entity_name": "Presidencia de la República / ISSSTE (Martí Batres)",
+      "entity_type": "institucion",
+      "platform": "Comunicado oficial (mañanera, bloque de salud del martes)",
+      "title": "Presidenta anuncia programa de 12 acciones en 120 días para fortalecer al ISSSTE",
+      "content": "Comunicado de Presidencia del 3 de noviembre de 2026: la presidenta Sheinbaum presento, junto con el director del ISSSTE Marti Batres y el director del IMSS Zoe Robledo, un programa emergente de 12 acciones en 120 dias para el ISSSTE -- en paralelo al ya anunciado para el IMSS, con el de IMSS-Bienestar por presentarse la semana siguiente. Equipamiento: el ISSSTE paso de 1 robot quirurgico (CMN 20 de Noviembre) a 13 en total (9 da Vinci y 4 ROSA, estos para procedimientos de rodilla); se incorporaron 710 ambulancias nuevas (sustituyendo 486 unidades antiguas) y 2,275 camas electricas para hospitalizacion (antes 927 disponibles). Metas: abatir rezagos quirurgicos (hernias, vesicula, cataratas, prostata, rodilla), duplicar consultas de telemedicina, construir 100 nuevos consultorios y sumar 1,710 especialistas medicos. Se abrio convocatoria de reclutamiento de personal medico y paramedico, con primeras jornadas el 18 y 19 de noviembre.",
+      "url": "https://www.gob.mx/presidencia/prensa/presidenta-claudia-sheinbaum-anuncia-programa-de-12-acciones-en-120-dias-para-fortalecer-al-issste",
+      "source_domain": "gob.mx",
+      "category": "sector_publico_salud",
+      "published_date": "2026-11-03"
     }
   ]
 }
