@@ -517,6 +517,50 @@
       "source_domain": "gob.mx",
       "category": "sector_publico_salud",
       "published_date": "2026-11-03"
+    },
+    {
+      "entity_name": "Abbott Laboratories",
+      "entity_type": "competidor",
+      "platform": "Comunicado de prensa oficial",
+      "title": "Abbott recibe aprobación de la FDA y marca CE para electrodo de desfibrilador que trabaja con el sistema eléctrico natural del corazón",
+      "content": "El 10 de noviembre de 2026, Abbott anuncio la aprobacion de la FDA y el marcado CE para el electrodo de desfibrilacion UltiSynq, disenado para ofrecer tanto estimulacion del sistema de conduccion como terapia de desfibrilacion. El dispositivo recibio la designacion de 'breakthrough device' de la FDA; la aprobacion se respaldo en resultados del ensayo ASCEND CSP IDE, presentados como datos de ultima hora en la reunion anual de Heart Rhythm Society de abril de 2026.",
+      "url": "https://abbott.mediaroom.com/press-releases?item=124791",
+      "source_domain": "abbott.mediaroom.com",
+      "category": "competencia",
+      "published_date": "2026-11-10"
+    },
+    {
+      "entity_name": "QuidelOrtho",
+      "entity_type": "competidor",
+      "platform": "Comunicado de prensa oficial",
+      "title": "QuidelOrtho reporta resultados del Q3 2026 y anuncia programa de reestructuración con ahorro anual de más de $80 millones en 2027",
+      "content": "QuidelOrtho reporto resultados del tercer trimestre 2026 (cerrado el 27 de septiembre) el 3 de noviembre: ingresos de ~$619 millones (-12% interanual), con caida de 6% en el segmento de laboratorios (por menores ventas en China) y de 27% en Point of Care. El CEO Brian Blaser senalo que el desempeno subyacente de los negocios de Laboratorios e Inmunohematologia se mantuvo solido. La empresa anuncio un nuevo Programa de Transformacion de Costos y Reestructuracion Empresarial, que espera generar mas de $80 millones en ahorros anuales en 2027 (incremental a los $140+ millones ya generados en años anteriores), con cargos de reestructuracion de ~$30-35 millones en el Q4 2026. El programa reorganiza la operacion en torno a dos unidades de negocio: Core Diagnostics y Point of Care Diagnostics. Guia de ingresos 2026 actualizada a $2.52-2.54 mil millones.",
+      "url": "https://www.quidelortho.com/global/en/resources/press-releases/quidelortho-reports-third-quarter-2026-financial-results",
+      "source_domain": "quidelortho.com",
+      "category": "competencia",
+      "published_date": "2026-11-03"
+    },
+    {
+      "entity_name": "Epic Systems Corporation",
+      "entity_type": "proveedor_tecnologia",
+      "platform": "Comunicado de prensa oficial",
+      "title": "Epic lanza \"Art\", asistente de IA que ayuda a enfermeras a responder mensajes de pacientes más rápido",
+      "content": "El 4 de noviembre de 2026, Epic anuncio que las enfermeras pueden responder mensajes de pacientes mas rapido con Art, su asistente clinico de IA, que clasifica los mensajes entrantes y redacta respuestas borrador para que las enfermeras las revisen antes de enviarlas -- reduciendo tiempo administrativo y liberando tiempo para atencion directa al paciente. Se suma a otras funciones de IA que Epic ha ido incorporando a su suite de expediente clinico electronico, el sistema dominante en hospitales de EE.UU.",
+      "url": "https://www.epic.com/epic/post/nurses-answer-patient-messages-faster-gain-time-for-care-with-epic-ai/",
+      "source_domain": "epic.com",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-04"
+    },
+    {
+      "entity_name": "Clínica Cayetano Heredia (Perú)",
+      "entity_type": "institucion",
+      "platform": "eHealth Reporter",
+      "title": "Asistente de IA de la Clínica Cayetano Heredia (Perú) logra reducir 10 puntos porcentuales el ausentismo a citas",
+      "content": "Cayetana, el asistente de IA para gestion de citas de la Clinica Cayetano Heredia en Peru, logro reducir en 10 puntos porcentuales la tasa de inasistencia (no-shows) a citas medicas, segun reporto el CTO de la clinica. Caso de uso concreto de IA aplicada a operacion clinica con resultado medido (no solo promesa), relevante como referencia de adopcion de IA en salud en Latinoamerica.",
+      "url": "https://ehealthreporter.com/como-cayetana-revoluciono-la-gestion-de-citas-en-la-clinica-cayetano-heredia/",
+      "source_domain": "ehealthreporter.com",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-12"
     }
   ]
 }
