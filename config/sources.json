@@ -73,7 +73,9 @@
     "epic.com",
     "ehealthreporter.com",
     "blog.google",
-    "nice.org.uk"
+    "nice.org.uk",
+    "nytimes.com",
+    "fiercehealthcare.com"
   ],
   "sources_by_tier": {
     "macro_internacional": [
@@ -86,7 +88,9 @@
       { "name": "Abbott Newsroom", "domain": "abbott.mediaroom.com" },
       { "name": "Bloomberg", "domain": "bloomberg.com" },
       { "name": "Google (blog oficial)", "domain": "blog.google" },
-      { "name": "NICE (National Institute for Health and Care Excellence, UK)", "domain": "nice.org.uk" }
+      { "name": "NICE (National Institute for Health and Care Excellence, UK)", "domain": "nice.org.uk" },
+      { "name": "The New York Times", "domain": "nytimes.com" },
+      { "name": "Fierce Healthcare", "domain": "fiercehealthcare.com" }
     ],
     "nacional_mexico": [
       { "name": "Presidencia de la República (versión estenográfica de la mañanera; bloque de salud/IMSS/ISSSTE/IMSS-Bienestar, habitualmente los martes)", "domain": "gob.mx" },

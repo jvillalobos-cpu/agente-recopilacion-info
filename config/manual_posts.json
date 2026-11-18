@@ -561,6 +561,28 @@
       "source_domain": "ehealthreporter.com",
       "category": "ia_salud_laboratorios",
       "published_date": "2026-11-12"
+    },
+    {
+      "entity_name": "Calif (startup) / OpenAI",
+      "entity_type": "proveedor_tecnologia",
+      "platform": "Cobertura de prensa",
+      "title": "IA descubre falla crítica en Java ('Java4Shell') que pone en alerta a hospitales, bancos y 90% de Fortune 500",
+      "content": "La startup de ciberseguridad Calif uso el modelo GPT-6 Cyber de OpenAI para encontrar una falla critica en el decodificador base64 de Java (bautizada 'Java4Shell'), que podria permitir corromper memoria y obtener acceso no autorizado a sistemas. Java se usa en agencias gubernamentales y en ~90% de las empresas Fortune 500, incluyendo bancos, hospitales, aerolineas y tecnologicas. Oracle emitio un parche critico. Hospitales en EE.UU. iniciaron escaneo urgente de redes y dispositivos medicos para aplicar parches. Calif senala que explotar la falla no es trivial, lo que da tiempo para instalar actualizaciones, pero advierte que podria seguir siendo una amenaza en sistemas sin actualizar durante los proximos 5-10 anos. GPT-6 Cyber esta clasificado por OpenAI como 'Critico' en su marco de preparacion (su nivel mas alto de riesgo cibernetico) y tiene acceso restringido. Relevante para Certus como alerta de ciberseguridad en infraestructura de TI hospitalaria/de laboratorio que use Java.",
+      "url": "https://www.nytimes.com/2026/11/18/business/hospitals-java-artificial-intelligence.html",
+      "source_domain": "nytimes.com",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-18"
+    },
+    {
+      "entity_name": "Epic Systems Corporation / Fiscalía General de Texas",
+      "entity_type": "proveedor_tecnologia",
+      "platform": "Cobertura de prensa",
+      "title": "Fiscalía de Texas retira parte de su demanda contra Epic Systems (acceso de padres a datos), continúa el caso antimonopolio",
+      "content": "La Fiscalia General de Texas retiro, en una notificacion presentada en noviembre de 2026, las acusaciones de practicas enganosas relacionadas con el acceso de padres a expedientes medicos de sus hijos menores en el portal MyChart de Epic (la configuracion de proxy limitaba el acceso a cierta informacion cuando los menores cumplian 12 anos). El documento judicial atribuyo la decision a cambios recientes en el software de Epic; la empresa lo rechaza, afirmando que la fiscalia pidio modificar configuraciones que corresponden decidir a medicos y sistemas de salud, no a Epic. Lo que permanece de la demanda (presentada originalmente en diciembre de 2025) son las acusaciones bajo la ley antimonopolio de Texas: que Epic usa su posicion dominante como proveedor de expedientes clinicos electronicos en EE.UU. para restringir competencia y limitar el uso de datos de pacientes por parte de hospitales.",
+      "url": "https://www.fiercehealthcare.com/health-tech/texas-ag-drops-allegations-epic-restricts-parents-access-health-data-antitrust-lawsuit",
+      "source_domain": "fiercehealthcare.com",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-12"
     }
   ]
 }
