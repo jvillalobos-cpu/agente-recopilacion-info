@@ -265,10 +265,9 @@
     }
 
     .block { margin-bottom: 14px; }
-    .section-header { margin: 0 0 8px; }
-    .item-wrap { margin-bottom: 12px; }
-    .empty-note-wrap { margin-bottom: 12px; }
-    .pair-row { margin-bottom: 4px; }
+    .masonry-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .section-header { margin: 0; }
+    .item-wrap, .empty-note-wrap { margin: 0; }
 
     /* ── Summary (al inicio del boletín) ── */
     .summary-card {
@@ -357,25 +356,17 @@
       .masthead h1 { font-size: 34px; }
       .masthead h2 { font-size: 14px; }
 
-      /* Flujo tipo "periódico": cada nota es su propia tarjeta y fluye sola por
-         las 2 columnas (como un masonry). Una categoría corta no deja hueco:
-         la siguiente nota -de la misma categoría o de la próxima- continúa
-         justo debajo. Ninguna tarjeta se parte nunca a la mitad. */
-      /* Orden numérico estricto: las secciones se emparejan 1-2, 3-4... en
-         filas de 2 columnas lado a lado; si sobra una sección impar al
-         final, ocupa las dos columnas completas en vez de quedar a medias. */
-      .pair-row {
+      /* Orden numérico estricto, en pares: cada encabezado de sección y cada
+         nota es una celda de un grid de 2 columnas que se acomoda en
+         secuencia estricta (como texto que envuelve línea por línea) --
+         si una sección deja una nota "non pareada", la siguiente sección
+         empieza justo al lado en la misma fila, sin dejar hueco. */
+      .masonry-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 22px;
+        gap: 14px 22px;
         align-items: start;
-        margin-bottom: 14px;
       }
-      .pair-row.full-width { grid-template-columns: 1fr; }
-      .section-header { margin: 0 0 8px; }
-      .item-wrap { margin-bottom: 12px; }
-      .empty-note-wrap { margin-bottom: 12px; }
-
       .card { padding: 18px 24px; }
       .card.accent-main { padding: 28px 32px; }
       .item-title { font-size: 15.5px; }
@@ -440,7 +431,21 @@
       </div>
     </div>
 
-    {% macro section_block(items, label, icon_class, icon_glyph, accent, tint) %}
+    {% set flow_sections = [
+      ("competencia", report.competencia, "Competencia", "icon-comp", "📊", "var(--red)", "var(--red-tint)"),
+      ("sector_publico", report.sector_publico, "Sector público salud", "icon-pub", "🏛️", "var(--blue)", "var(--blue-tint)"),
+      ("ia_salud_laboratorios", report.ia_salud_laboratorios, "IA en salud y laboratorios", "icon-ia", "🧠", "var(--violet)", "var(--violet-tint)"),
+      ("canales_informacion", report.canales_informacion, "Canales de información", "icon-chan", "📡", "var(--gold)", "var(--gold-tint)"),
+      ("sector_privado", report.sector_privado, "Sector privado salud", "icon-priv", "🏢", "#7d5fc4", "var(--violet-tint)"),
+    ] %}
+
+    <!-- [3-7] Competencia, Sector Público, IA, Canales y Sector Privado:
+         cada encabezado y cada nota es una celda de un grid de 2 columnas
+         que se acomoda en orden estricto, como texto que envuelve línea por
+         línea -- si una sección deja una celda "sin pareja", la siguiente
+         sección empieza justo al lado en la misma fila, sin dejar hueco. -->
+    <div class="masonry-grid">
+      {% for key, items, label, icon_class, icon_glyph, accent, tint in flow_sections %}
       <div class="section-header">
         <div class="section-label"><div class="section-icon {{ icon_class }}">{{ icon_glyph }}</div><span class="text">{{ label }}</span><span class="count">{{ items|length }}</span></div>
       </div>
@@ -464,29 +469,8 @@
       {% else %}
       <div class="empty-note-wrap"><p class="empty-note">Sin novedades registradas esta semana en esta categoría.</p></div>
       {% endif %}
-    {% endmacro %}
-
-    {% set flow_sections = [
-      ("competencia", report.competencia, "Competencia", "icon-comp", "📊", "var(--red)", "var(--red-tint)"),
-      ("sector_publico", report.sector_publico, "Sector público salud", "icon-pub", "🏛️", "var(--blue)", "var(--blue-tint)"),
-      ("ia_salud_laboratorios", report.ia_salud_laboratorios, "IA en salud y laboratorios", "icon-ia", "🧠", "var(--violet)", "var(--violet-tint)"),
-      ("canales_informacion", report.canales_informacion, "Canales de información", "icon-chan", "📡", "var(--gold)", "var(--gold-tint)"),
-      ("sector_privado", report.sector_privado, "Sector privado salud", "icon-priv", "🏢", "#7d5fc4", "var(--violet-tint)"),
-    ] %}
-
-    <!-- [3-7] Competencia, Sector Público, IA, Canales y Sector Privado:
-         orden numérico estricto 1,2,3,4... emparejadas en filas de 2
-         columnas; si sobra una sección impar al final, ocupa el ancho
-         completo (merge de ambas columnas) en vez de quedar a medias. -->
-    {% for pair in flow_sections|batch(2) %}
-    <div class="pair-row{% if pair|length < 2 %} full-width{% endif %}">
-      {% for key, items, label, icon_class, icon_glyph, accent, tint in pair %}
-      <div class="block">
-        {{ section_block(items, label, icon_class, icon_glyph, accent, tint) }}
-      </div>
       {% endfor %}
     </div>
-    {% endfor %}
 
     <!-- Footer / Signature -->
     <div class="footer">
