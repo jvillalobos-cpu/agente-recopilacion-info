@@ -462,6 +462,50 @@
       "source_domain": "nice.org.uk",
       "category": "ia_salud_laboratorios",
       "published_date": "2026-11-09"
+    },
+    {
+      "entity_name": "OpenAI / Photon",
+      "entity_type": "proveedor_tecnologia",
+      "platform": "LinkedIn (Mike Zack, MD, PhD, MPH)",
+      "title": "OpenAI y Photon permiten a médicos en EE.UU. redactar y enviar recetas desde ChatGPT",
+      "content": "Desde el 16 de noviembre de 2026, ChatGPT for Clinicians y ChatGPT for Healthcare permiten a medicos licenciados en EE.UU. redactar y enviar recetas a traves del plugin de Photon sin salir del chat. Los medicos discuten opciones de dosificacion, redactan la receta con la informacion del paciente y la revisan/autorizan; Photon dice que las recetas se verifican contra interacciones farmacologicas durante la redaccion. Toda receta requiere aprobacion del clinico (no soporta sustancias controladas por ahora); el paciente recibe un enlace para comparar farmacias por precio. Acceso gratuito hasta el 31 de diciembre de 2026. El Dr. Mike Zack (CEO de PGxAI) senala que falta validacion clinica independiente sobre si el flujo ayuda a detectar antes un error de dosis o una contraindicacion no registrada (ej. funcion renal no mencionada en la conversacion).",
+      "url": "https://lnkd.in/p/gVTxcxUe",
+      "source_domain": "lnkd.in",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-16"
+    },
+    {
+      "entity_name": "CVS Health",
+      "entity_type": "competidor",
+      "platform": "Cobertura de prensa",
+      "title": "CVS Health anuncia escisión de su imperio de salud de $117,000 millones, separando farmacias de seguros",
+      "content": "CVS Health anuncio el 4 de noviembre de 2026 que se dividira en dos empresas publicas independientes: CVS Pharmacy (red minorista de ~9,000 tiendas, farmacia por correo, MinuteClinic y el negocio tecnologico Health100, liderado por Prem Shah) y una entidad que conserva el nombre CVS Health (Aetna, CVS Caremark, CVS Specialty, Oak Street Health y Signify Health, liderada por David Joyner). La escision esta estructurada para no generar impuestos a CVS Health ni a sus accionistas. Las acciones cayeron tras el anuncio pese a que la empresa habia superado pronosticos de Wall Street por ocho trimestres consecutivos. Uno de los movimientos corporativos mas grandes del sector salud en EE.UU.",
+      "url": "https://www.infobae.com/estados-unidos/2026/11/05/cvs-health-se-dividira-en-dos-empresas-independientes-una-para-farmacias-y-otra-para-seguros-medicos/",
+      "source_domain": "infobae.com",
+      "category": "competencia",
+      "published_date": "2026-11-05"
+    },
+    {
+      "entity_name": "IntraMed",
+      "entity_type": "empresa_salud_digital",
+      "platform": "LinkedIn",
+      "title": "IntraMed celebra EntrePares México: líderes del ecosistema de salud discuten IA con supervisión humana (human-in-the-loop)",
+      "content": "IntraMed reunio a 60 lideres del ecosistema de salud (hospitales, industria farmaceutica, tecnologia, asociaciones medicas) en EntrePares Mexico, Torre Virreyes CDMX. Nicolas Vega Olmos (Country Manager IntraMed Mexico) presento la propuesta de la red profesional; Teresa Gutierrez (Growth Protocol) abrio la conversacion sobre inteligencia artificial y transformacion de procesos. Gaston Valverde Lyons (CEO IntraMed) destaco el valor del pensamiento critico y las capacidades humanas para orientar el uso de tecnologia, bajo el concepto de human-in-the-loop: la IA como herramienta para potenciar personas, con supervision humana como parte esencial de cada decision. Participaron tambien Enrique Culebro Karam (Central Media), Dr. Santiago March (New Technologies Head, Funsalud), Dra. Dinorah Hernandez Melchor (Directora de Terapias Avanzadas, Ingenes) y Mercedes Gutierrez Smith (CEO ATSO Pharma y Timser Group).",
+      "url": "https://www.linkedin.com/posts/intramednet_salud-redprofesional-inteligenciaartificial-activity-7527121775168544768-m3Eq",
+      "source_domain": "linkedin.com",
+      "category": "canales_informacion",
+      "published_date": "2026-11-16"
+    },
+    {
+      "entity_name": "Voxmith / Manvendra Singh",
+      "entity_type": "fuente_curada",
+      "platform": "LinkedIn",
+      "title": "Mapa de 20 empresas de agentes de IA para salud en EE.UU. que levantaron capital en los últimos 12 meses",
+      "content": "Infografia de Voxmith (datos de New Market Pitch, healthcare AI agents funding tracker, al 13 de noviembre de 2026) mapea 20 empresas estadounidenses de agentes de IA en salud que levantaron capital en el ultimo ano, agrupadas en 4 flujos de trabajo: llamadas y acceso de pacientes (11 empresas: Assort Health, Prosper AI, Hippocratic AI, Confido Health, Parakeet Health, Ferry Health, Basata, UnityAI, Clarion, Amigo AI, MiiHealth AI); autorizaciones previas y acceso a medicamentos (2: Forus, Latent Health); facturacion y ciclo de ingresos (3: Candid Health, Charta Health, GenHealth.ai); y operaciones hospitalarias/clinicas (4: Suki, Luminai, Vitalize, Assured Health). Manvendra Singh (fundador de Voxmith) senala que cada flujo de trabajo falla de forma distinta: un agente de acceso puede confirmar una cita que nunca se agendo; uno de autorizacion previa puede registrar mal un medicamento o ID de seguro; uno de facturacion puede cotizar un saldo desactualizado; uno de personal puede ofrecer un turno al clinico equivocado.",
+      "url": "https://lnkd.in/p/g5xxytS6",
+      "source_domain": "lnkd.in",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-17"
     }
   ]
 }
