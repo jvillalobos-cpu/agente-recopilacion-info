@@ -726,6 +726,17 @@
       "source_domain": "linkedin.com",
       "category": "canales_informacion",
       "published_date": "2026-11-24"
+    },
+    {
+      "entity_name": "Consorcio Mexicano de Hospitales",
+      "entity_type": "fuente_curada",
+      "platform": "LinkedIn",
+      "title": "Consorcio Mexicano de Hospitales abre 4a generacion del Diplomado en Direccion e Innovacion Hospitalaria (DH+)",
+      "content": "El Consorcio Mexicano de Hospitales, en colaboracion con la Facultad de Medicina de la UNAM y FUNSALUD, abrio inscripciones para la 4a generacion del Diplomado en Direccion e Innovacion Hospitalaria (DH+), dirigido a directivos y gerentes de hospitales privados e instituciones de salud, con inicio el 1 de febrero de 2027.",
+      "url": "https://lnkd.in/p/gkWRvRek",
+      "source_domain": "lnkd.in",
+      "category": "canales_informacion",
+      "published_date": "2026-11-19"
     }
   ]
 }
