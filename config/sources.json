@@ -221,15 +221,7 @@
     { "entity_name": "Medikit", "entity_type": "competidor", "platform": "LinkedIn", "url": "https://mx.linkedin.com/company/medikitmx" },
     { "entity_name": "HealthTech México", "entity_type": "asociacion", "platform": "LinkedIn", "url": "https://mx.linkedin.com/company/ahmx" }
   ],
-  "publicaciones_pendientes_de_detalle": [
-    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/gE6a8unV" },
-    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/g4XyKfB7" },
-    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/gQ_PX-tV" },
-    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/gB4pUQ-R" },
-    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/gKjWUKmm" },
-    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/g8Kc66FE" },
-    { "entity_name": "HealthTech México", "tema": "Avances en Regulación, Ciberseguridad e Infraestructura Digital Sanitaria (tema exacto por confirmar)", "url": "https://lnkd.in/p/guvRTHem" }
-  ],
+  "publicaciones_pendientes_de_detalle": [],
   "categories": {
     "nota_principal": "Noticias de mayor impacto estratégico o regulatorio de la semana.",
     "competencia": "Movimientos de mercado, alianzas, adquisiciones y nuevos servicios de laboratorios clínicos y salud privada (ver competidores_monitoreados).",
