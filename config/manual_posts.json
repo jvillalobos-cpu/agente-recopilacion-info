@@ -715,6 +715,17 @@
       "source_domain": "emol.com",
       "category": "canales_informacion",
       "published_date": "2026-11-18"
+    },
+    {
+      "entity_name": "Asociación HealthTech México",
+      "entity_type": "asociacion_monitoreada",
+      "platform": "LinkedIn",
+      "title": "Presidente de HealthTech México participa en podcast sobre interoperabilidad y transformacion digital en salud",
+      "content": "Jesus Hernandez Camacho, presidente de la Asociacion HealthTech Mexico, participo en el podcast Salud en Serio LATAM conversando sobre interoperabilidad, intercambio de informacion clinica y los retos de la digitalizacion del sector salud en Latinoamerica.",
+      "url": "https://www.linkedin.com/posts/ahmx_la-salud-digital-avanza-pero-qu%C3%A9-tan-activity-7531033012772208640-tbxm",
+      "source_domain": "linkedin.com",
+      "category": "canales_informacion",
+      "published_date": "2026-11-24"
     }
   ]
 }
