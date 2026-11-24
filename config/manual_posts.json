@@ -693,6 +693,17 @@
       "source_domain": "heraldobinario.com.mx",
       "category": "sector_publico_salud",
       "published_date": "2026-11-21"
+    },
+    {
+      "entity_name": "Google",
+      "entity_type": "fuente_curada",
+      "platform": "Blog oficial",
+      "title": "Google publica marco multimetodo para evaluar IA generativa en salud",
+      "content": "Google publico el 4 de noviembre de 2026 un marco de evaluacion para IA generativa en salud que combina pruebas de preguntas cerradas, evaluadores automaticos de IA y revision humana experta para medir precision, seguridad y utilidad, partiendo de un mapa del recorrido critico del usuario (uso previsto y mal uso previsible) antes de elegir los casos de prueba.",
+      "url": "https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/",
+      "source_domain": "blog.google",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-04"
     }
   ]
 }
