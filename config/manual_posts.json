@@ -704,6 +704,17 @@
       "source_domain": "blog.google",
       "category": "ia_salud_laboratorios",
       "published_date": "2026-11-04"
+    },
+    {
+      "entity_name": "Hospital Clínico Universidad de Chile",
+      "entity_type": "fuente_curada",
+      "platform": "Cobertura de prensa",
+      "title": "Ciberataque al Hospital Clínico de la Universidad de Chile afecta agendamiento medico",
+      "content": "El Hospital Clinico de la Universidad de Chile sufrio el 14 de noviembre de 2026 un ciberataque que afecto parte de sus sistemas informaticos, impidiendo a pacientes agendar horas por sitio web o call center; el hospital trabaja con la Agencia Nacional de Ciberseguridad y diputados de la Comision de Salud enviaron oficios para aclarar si se comprometieron fichas clinicas.",
+      "url": "https://www.emol.com/noticias/Nacional/2026/11/18/1217412/ciberataque-hospital-clinico-universidad-chile.html",
+      "source_domain": "emol.com",
+      "category": "canales_informacion",
+      "published_date": "2026-11-18"
     }
   ]
 }

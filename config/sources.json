@@ -79,7 +79,8 @@
     "fiercehealthcare.com",
     "deliabarraza.com",
     "vivalanoticia.mx",
-    "heraldobinario.com.mx"
+    "heraldobinario.com.mx",
+    "emol.com"
   ],
   "sources_by_tier": {
     "macro_internacional": [
@@ -154,6 +155,9 @@
     ],
     "cobertura_negocios_salud_adicional": [
       { "name": "Heraldo Binario", "domain": "heraldobinario.com.mx" }
+    ],
+    "cobertura_internacional_salud": [
+      { "name": "Emol (El Mercurio Online, Chile)", "domain": "emol.com" }
     ],
     "asociaciones_sitio_oficial": [
       { "name": "Asociación HealthTech México (sitio oficial)", "domain": "asociacionhealthtech.mx" }
