@@ -80,7 +80,8 @@
     "deliabarraza.com",
     "vivalanoticia.mx",
     "heraldobinario.com.mx",
-    "emol.com"
+    "emol.com",
+    "mobihealthnews.com"
   ],
   "sources_by_tier": {
     "macro_internacional": [
@@ -157,7 +158,8 @@
       { "name": "Heraldo Binario", "domain": "heraldobinario.com.mx" }
     ],
     "cobertura_internacional_salud": [
-      { "name": "Emol (El Mercurio Online, Chile)", "domain": "emol.com" }
+      { "name": "Emol (El Mercurio Online, Chile)", "domain": "emol.com" },
+      { "name": "MobiHealthNews", "domain": "mobihealthnews.com" }
     ],
     "asociaciones_sitio_oficial": [
       { "name": "Asociación HealthTech México (sitio oficial)", "domain": "asociacionhealthtech.mx" }

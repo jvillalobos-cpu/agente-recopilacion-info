@@ -759,6 +759,28 @@
       "source_domain": "lnkd.in",
       "category": "sector_publico_salud",
       "published_date": "2026-11-24"
+    },
+    {
+      "entity_name": "Apple",
+      "entity_type": "fuente_curada",
+      "platform": "Cobertura de prensa",
+      "title": "Apple lanza estudio de IA en salud con OpenEvidence para hasta 200,000 usuarios en EE.UU.",
+      "content": "Apple lanzo el 16 de noviembre de 2026 el Apple Health AI Usage Study junto con OpenEvidence, una app gratuita solo para EE.UU. donde hasta 200,000 adultos pueden hacer preguntas de salud y recibir respuestas en lenguaje simple con citas de revistas como NEJM y JAMA; Apple aclara que los datos del estudio no se usaran para entrenar modelos de IA.",
+      "url": "https://www.mobihealthnews.com/news/apple-launches-research-study-openevidence",
+      "source_domain": "mobihealthnews.com",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-16"
+    },
+    {
+      "entity_name": "Oura",
+      "entity_type": "fuente_curada",
+      "platform": "Cobertura de prensa",
+      "title": "Oura adquiere Counsel Health (atencion primaria con IA) por 25 millones",
+      "content": "Oura acordo adquirir Counsel Health, empresa de atencion primaria con IA, por 625 millones de dolares en efectivo, en una operacion que se espera cierre a fines de 2026; Counsel ofrece un chat de IA para preguntas de salud con opcion de consultar a medicos certificados para diagnostico, receta o referencia.",
+      "url": "https://www.mobihealthnews.com/news/oura-acquire-counsel-health-625m",
+      "source_domain": "mobihealthnews.com",
+      "category": "ia_salud_laboratorios",
+      "published_date": "2026-11-17"
     }
   ]
 }
