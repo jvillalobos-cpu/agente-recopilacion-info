@@ -781,6 +781,39 @@
       "source_domain": "mobihealthnews.com",
       "category": "ia_salud_laboratorios",
       "published_date": "2026-11-17"
+    },
+    {
+      "entity_name": "Secretaría de Salud",
+      "entity_type": "fuente_curada",
+      "platform": "Versión estenográfica (mañanera)",
+      "title": "OPS/OMS retiran a Mexico la certificacion de pais libre de sarampion; Secretario de Salud reporta solo 12 casos activos en Chiapas",
+      "content": "El secretario de Salud, David Kershenobich, informo el 24 de noviembre de 2026 que la OPS y la OMS retiraron a Mexico la certificacion de pais libre de sarampion por el brote reciente, pero que actualmente solo quedan 12 casos activos, todos en Chiapas, con 90% de cobertura de vacunacion y 10 millones de vacunas disponibles para el brote.",
+      "url": "https://www.gob.mx/presidencia/es/articulos/version-estenografica-conferencia-de-prensa-de-la-presidenta-claudia-sheinbaum-pardo-del-24-de-noviembre-de-2026?idiom=es",
+      "source_domain": "gob.mx",
+      "category": "sector_publico_salud",
+      "published_date": "2026-11-24"
+    },
+    {
+      "entity_name": "IMSS Bienestar",
+      "entity_type": "fuente_curada",
+      "platform": "Versión estenográfica (mañanera)",
+      "title": "IMSS Bienestar inaugura en Toluca su primer Centro Integral de Salud Renal y Atencion Primaria",
+      "content": "IMSS Bienestar inauguro el 24 de noviembre de 2026 en Toluca, Estado de Mexico, su primer Centro Integral de Salud Renal y Atencion Primaria, con 25 sillones de hemodialisis y capacidad para mas de 12 mil sesiones al año, servicio gratuito frente a un costo privado de 2,000-2,500 pesos por sesion.",
+      "url": "https://www.gob.mx/presidencia/es/articulos/version-estenografica-conferencia-de-prensa-de-la-presidenta-claudia-sheinbaum-pardo-del-24-de-noviembre-de-2026?idiom=es",
+      "source_domain": "gob.mx",
+      "category": "sector_publico_salud",
+      "published_date": "2026-11-24"
+    },
+    {
+      "entity_name": "Secretaría de Bienestar",
+      "entity_type": "fuente_curada",
+      "platform": "Versión estenográfica (mañanera)",
+      "title": "Servicio Universal de Salud: 5,325 asambleas realizadas rumbo a 12,750 consultorios de primer nivel",
+      "content": "La secretaria de Bienestar, Leticia Ramirez, reporto el 24 de noviembre de 2026 que se han realizado 5,325 asambleas con casi 200 mil personas para establecer los consultorios del Servicio Universal de Salud, rumbo a la meta de 12,750 consultorios; 6,710 estaran listos para enero de 2027.",
+      "url": "https://www.gob.mx/presidencia/es/articulos/version-estenografica-conferencia-de-prensa-de-la-presidenta-claudia-sheinbaum-pardo-del-24-de-noviembre-de-2026?idiom=es",
+      "source_domain": "gob.mx",
+      "category": "sector_publico_salud",
+      "published_date": "2026-11-24"
     }
   ]
 }
