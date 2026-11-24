@@ -671,6 +671,28 @@
       "source_domain": "deepmind.google",
       "category": "ia_salud_laboratorios",
       "published_date": "2026-11-11"
+    },
+    {
+      "entity_name": "Farmacias Similares",
+      "entity_type": "fuente_curada",
+      "platform": "LinkedIn",
+      "title": "Farmacias Similares lleva a Holbox su modelo combinado de Café Simi y SimiPet Care",
+      "content": "Farmacias Similares anuncio la apertura en Holbox de un formato que combina cafeteria (Cafe Simi) con un consultorio veterinario (SimiPet Care), dirigido a una poblacion residente estimada de 600 perros y gatos en la isla; el modelo tambien contempla venta de bebidas, alimentos, accesorios y articulos de coleccion. El presidente ejecutivo Victor Gonzalez Herrera explico que estos formatos nacieron principalmente por peticiones de la gente en redes sociales.",
+      "url": "https://lnkd.in/p/gKpB6Xhk",
+      "source_domain": "lnkd.in",
+      "category": "competencia",
+      "published_date": "2026-11-23"
+    },
+    {
+      "entity_name": "IMSS",
+      "entity_type": "fuente_curada",
+      "platform": "Cobertura de prensa",
+      "title": "IMSS y Medtronic firman acuerdo para instalar consultorios de primer nivel",
+      "content": "El IMSS y Medtronic firmaron el viernes 20 de noviembre de 2026 un acuerdo para instalar consultorios de primer nivel, durante el Encuentro Estrategico de Innovacion en Salud IMSS-Medtronic-UNAM realizado en el Museo Nacional de Antropologia de la CDMX.",
+      "url": "https://www.heraldobinario.com.mx/empresas/2026/11/21/imss-y-medtronic-firman-acuerdo-para-instalar-consultorios-de-primer-nivel-43759.html",
+      "source_domain": "heraldobinario.com.mx",
+      "category": "sector_publico_salud",
+      "published_date": "2026-11-21"
     }
   ]
 }

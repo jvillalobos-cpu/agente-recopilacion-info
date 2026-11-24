@@ -78,7 +78,8 @@
     "nytimes.com",
     "fiercehealthcare.com",
     "deliabarraza.com",
-    "vivalanoticia.mx"
+    "vivalanoticia.mx",
+    "heraldobinario.com.mx"
   ],
   "sources_by_tier": {
     "macro_internacional": [
@@ -150,6 +151,9 @@
     ],
     "cobertura_regional_sinaloa": [
       { "name": "Viva la Noticia (Sinaloa)", "domain": "vivalanoticia.mx" }
+    ],
+    "cobertura_negocios_salud_adicional": [
+      { "name": "Heraldo Binario", "domain": "heraldobinario.com.mx" }
     ],
     "asociaciones_sitio_oficial": [
       { "name": "Asociación HealthTech México (sitio oficial)", "domain": "asociacionhealthtech.mx" }
